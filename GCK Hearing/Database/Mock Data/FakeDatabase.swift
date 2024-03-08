@@ -51,6 +51,18 @@ let jsonData = """
 class MockData {
     static let shared = MockData()
     
+    var mockLocationList = [
+        "Clinical Practice #1",
+        "Clinical Practice #2",
+        "Clinical Practice #3",
+        "Clinical Practice #4",
+        "Clinical Practice #5",
+        "Clinical Practice #6",
+        "Clinical Practice #7",
+        "Clinical Practice #8",
+        "Clinical Practice #9",
+        "Clinical Practice #10"
+    ]
     
     var mockPatient = Patient(id: 003, firstName: "Jackie", lastName: "Bulb", dob: "2-05-2019")
     

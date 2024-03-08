@@ -26,6 +26,8 @@
 		74B17F372B9A9CC400527AA0 /* ScreeningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B17F362B9A9CC400527AA0 /* ScreeningView.swift */; };
 		74B17F3A2B9B75DE00527AA0 /* ResultDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B17F392B9B75DE00527AA0 /* ResultDetailsViewModel.swift */; };
 		74B17F3C2B9B79C000527AA0 /* ResultDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B17F3B2B9B79C000527AA0 /* ResultDetailsView.swift */; };
+		74B17F3F2B9BCA0D00527AA0 /* MultiLocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B17F3E2B9BCA0D00527AA0 /* MultiLocationViewModel.swift */; };
+		74B17F412B9BCC3800527AA0 /* MultiLocationListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B17F402B9BCC3800527AA0 /* MultiLocationListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +51,8 @@
 		74B17F362B9A9CC400527AA0 /* ScreeningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreeningView.swift; sourceTree = "<group>"; };
 		74B17F392B9B75DE00527AA0 /* ResultDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultDetailsViewModel.swift; sourceTree = "<group>"; };
 		74B17F3B2B9B79C000527AA0 /* ResultDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultDetailsView.swift; sourceTree = "<group>"; };
+		74B17F3E2B9BCA0D00527AA0 /* MultiLocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiLocationViewModel.swift; sourceTree = "<group>"; };
+		74B17F402B9BCC3800527AA0 /* MultiLocationListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiLocationListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,6 +200,7 @@
 		74B17F2D2B9A215500527AA0 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				74B17F3D2B9BC9B500527AA0 /* Multi Location */,
 				74B17F382B9B75BA00527AA0 /* Results */,
 				74B17F292B97F56400527AA0 /* Login */,
 				74B17F332B9A938C00527AA0 /* Screening */,
@@ -230,6 +235,15 @@
 				74B17F3B2B9B79C000527AA0 /* ResultDetailsView.swift */,
 			);
 			path = Results;
+			sourceTree = "<group>";
+		};
+		74B17F3D2B9BC9B500527AA0 /* Multi Location */ = {
+			isa = PBXGroup;
+			children = (
+				74B17F3E2B9BCA0D00527AA0 /* MultiLocationViewModel.swift */,
+				74B17F402B9BCC3800527AA0 /* MultiLocationListView.swift */,
+			);
+			path = "Multi Location";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -308,9 +322,11 @@
 				74B17F112B979AE400527AA0 /* PatientListView.swift in Sources */,
 				74B17F322B9A37FC00527AA0 /* PatientDetailViewModel.swift in Sources */,
 				74B17F1E2B97CDEF00527AA0 /* PatientListLoader.swift in Sources */,
+				74B17F412B9BCC3800527AA0 /* MultiLocationListView.swift in Sources */,
 				74B17F142B979DCD00527AA0 /* PatientViewModel.swift in Sources */,
 				74B17F302B9A217600527AA0 /* PatientDetailView.swift in Sources */,
 				74B17F352B9A93AF00527AA0 /* ScreeningViewModel.swift in Sources */,
+				74B17F3F2B9BCA0D00527AA0 /* MultiLocationViewModel.swift in Sources */,
 				74B17F3A2B9B75DE00527AA0 /* ResultDetailsViewModel.swift in Sources */,
 				74B17F222B97E82B00527AA0 /* SearchView.swift in Sources */,
 				74B17F1A2B97A0DE00527AA0 /* FakeDatabase.swift in Sources */,
