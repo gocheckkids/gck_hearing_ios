@@ -8,10 +8,12 @@
 import SwiftUI
 
 @main
-struct GCK_HearingApp: App {
+struct GCK_HearingApp: App { 
+    let vm = PatientListViewModel(loader: LocalPatientListLoader())
+    let screeningVM = ScreeningViewModel(patient: MockData.shared.mockPatient)
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ScreeningView(screeningVm: screeningVM)
         }
     }
 }
