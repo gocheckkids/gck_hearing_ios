@@ -7,43 +7,61 @@
 
 import SwiftUI
 
+
+
 struct LoginView: View {
     @State private var username: String = ""
     @State private var password: String = ""
     @State private var isLoggedIn: Bool = false
-
+    
+    @ObservedObject var loginVM: LoginViewModel
+    
     var body: some View {
        
-            VStack {
-                Image("header_image") // Assuming "header_image" is in your assets
+        VStack(spacing: 20) {
+                Image("gck_stacked_logo") // Assuming "header_image" is in your assets
                     .resizable()
-                    .frame(height: 200)
+                    .frame(width: 260, height: 130)
                     .scaledToFit()
-
-                TextField("Username", text: $username)
-                    .padding()
-                    .background(Color.gray)
-                    .cornerRadius(5.0)
-                    .padding(.horizontal, 50)
-
-                SecureField("Password", text: $password)
-                    .padding()
-                    .background(Color.gray)
-                    .cornerRadius(5.0)
-                    .padding([.horizontal, .bottom], 50)
-
-                Button(action: {
-                    // Perform login logic here, for simplicity, I'm just setting isLoggedIn to true
-                    self.isLoggedIn = true
-                }) {
-                    Text("Login")
-                        .foregroundColor(.white)
-                        .padding()
-                        .frame(width: 200, height: 50)
-                        .background(Color.blue)
-                        .cornerRadius(10.0)
+                    .padding(50)
+                
+            Group {
+                TextField("Email", text: $loginVM.emailText)
+                
+                Divider()
+                    .frame(height: 1)
+                    .background(.cyan)
+                
+                SecureField("Password", text: $loginVM.passwordText)
+                Divider()
+                    .frame(height: 1)
+                    .background(.cyan)
+            }
+            .padding(.horizontal, 25)
+            
+            Spacer()
+                .frame(height: 30)
+               
+            Group {
+                RoundedButton(title: "Login Button", color: .cyan) {
+                    Task {
+                        await loginVM.login()
+                    }
+                }
+                Button {
+                    
+                } label: {
+                    Text("Forgot Password")
+                }
+                Button {
+                    
+                } label: {
+                    Text("About")
                 }
             }
+            
+            }
+        .frame(maxHeight: .infinity, alignment: .top)
             .padding()
         }
     
@@ -51,7 +69,6 @@ struct LoginView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginView()
+        LoginView(loginVM: LoginViewModel())
     }
 }
-
