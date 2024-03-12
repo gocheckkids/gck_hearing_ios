@@ -22,12 +22,12 @@ class PatientDetailViewModel: ObservableObject {
     @Published var recentResults:[ResultsModel] = []
     
     var resultCoordinator: (() -> ())?
-    var screeningCoordinator: (() -> ())?
+    private unowned let screeningCoordinator: CoordinatorObject
     
-    init(patient: Patient, resultCoordinator: ( () -> Void)? = nil, screeningCoordinator: ( () -> Void)? = nil, loader: PatientVisitLoader) {
+    init(patient: Patient, resultCoordinator: ( () -> Void)? = nil, screeningCoordinator: CoordinatorObject, loader: PatientVisitLoader) {
+        self.screeningCoordinator = screeningCoordinator
         self.patient = patient
         self.resultCoordinator = resultCoordinator
-        self.screeningCoordinator = screeningCoordinator
         self.patientVisitLoader = loader
     }
     

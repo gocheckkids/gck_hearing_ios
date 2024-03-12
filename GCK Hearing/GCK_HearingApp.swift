@@ -9,11 +9,29 @@ import SwiftUI
 
 @main
 struct GCK_HearingApp: App { 
-    let vm = PatientListViewModel(loader: LocalPatientListLoader())
+//    let patientListVM = PatientListViewModel(loader: LocalPatientListLoader(), coordinator: CoordinatorObject(visitLoader: LocalPatientVisitsLoader()))
     let screeningVM = ScreeningViewModel(patient: MockData.shared.mockPatient)
+    
+    @StateObject var coordinator = CoordinatorObject(listLoader: LocalPatientListLoader(), visitLoader: LocalPatientVisitsLoader())
+    
+    @ObservedObject var loginVM = LoginViewModel()
+    
     var body: some Scene {
         WindowGroup {
-            ScreeningView(screeningVm: screeningVM)
+            if loginVM.isLoggedIn {
+                CoordinatorView(object: coordinator)
+            }
+            else {
+                LoginView(loginVM: loginVM)
+            }
         }
     }
 }
+
+/* 
+ Route flow
+ - start w/ login
+ -> logged in?
+ -> patientCoordinator creates patientlistview
+ 
+ */

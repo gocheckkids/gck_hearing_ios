@@ -15,7 +15,7 @@ struct PatientListScreen: View {
     }
     
     var body: some View {
-        NavigationView {
+        
             VStack {
                 //                SearchBarView(searchText: $vm.searchText, placeholderText: "Search for a patient ...")
                 //                Spacer()
@@ -25,69 +25,72 @@ struct PatientListScreen: View {
                     case .loading:
                         PatientListLoadingView()
                     case .success:
-                        PatientListLoadedView(patientList: vm.allPatients, date: "02/11/2024")
-                        PatientListLoadedView(patientList: vm.allPatients, date: "02/07/2024")
-                        PatientListLoadedView(patientList: vm.allPatients, date: "02/03/2024")
+                        PatientListLoadedView(patientList: vm.allPatients, dateString: "02/11/2024", action: { name in
+                            
+                                 vm.goToDetails(name)
+                            
+                        })
+//                        PatientListLoadedView(patientList: vm.allPatients, dateString: "02/07/2024", action: vm.goToDetails(_:))
+//                        PatientListLoadedView(patientList: vm.allPatients, dateString: "02/03/2024", action: vm.goToDetails(_:))
                     case .failed:
                         PatientListErrorView()
                     }
                 }
                 .listStyle(.plain)
             }
-            
             .navigationTitle("Patients")
             .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
-                    RoundedButton(title: "Menu", color: .cyan, action: {})
-                }
-                ToolbarItem(placement: .topBarTrailing) {
-                    RoundedButton(title: "Add", color: .cyan, action: {})
-                }
-            }
-        }
+//            .toolbar {
+//                ToolbarItem(placement: .topBarLeading) {
+//                    RoundedButton(title: "Menu", color: .cyan, action: {})
+//                }
+//                ToolbarItem(placement: .topBarTrailing) {
+//                    RoundedButton(title: "Add", color: .cyan, action: {})
+//                }
+//            }
+        
         .onAppear {
             Task {
                 await vm.loadPatients()
             }
         }
-        .searchable(text: $vm.searchText, prompt: "Find patient by name or ID")
+//        .searchable(text: $vm.searchText, prompt: "Find patient by name or ID")
     }
 }
 
-struct PatientListLoadingView: View {
-    var body: some View {
-        ProgressView()
-    }
-}
-
-struct PatientListLoadedView: View {
-    let patientList: [Patient]
-    let dateString: String
-    
-    init(patientList: [Patient], date: String) {
-        self.patientList = patientList
-        self.dateString = date
-    }
-    
-    var body: some View {
-        Section {
-            ForEach(patientList) { patient in
-                PatientRow(patientName: patient.fullName)
-            }
-            .listRowInsets(.init(top: 0, leading: 10, bottom: 5, trailing: 10))
-            .listRowSeparator(.hidden, edges: .all)
-        } header: {
-            Text(dateString)
-//                .frame(maxWidth: .infinity, alignment: .leading)
-//                .background(.teal)
+extension PatientListScreen {
+    struct PatientListLoadingView: View {
+        var body: some View {
+            ProgressView()
         }
     }
-}
-
-struct PatientListErrorView: View {
-    var body: some View {
-        Text("Error fetching data!")
+    
+    struct PatientListLoadedView: View {
+        let patientList: [Patient]
+        let dateString: String
+        let action: (Patient) -> Void
+        var body: some View {
+            Section {
+                ForEach(patientList) { patient in
+                    PatientRow(patientName: patient.fullName)
+                        .onNavigation {
+                            action(patient)
+                        }
+                }
+                .listRowInsets(.init(top: 0, leading: 10, bottom: 5, trailing: 10))
+                .listRowSeparator(.hidden, edges: .all)
+            } header: {
+                Text(dateString)
+                //                .frame(maxWidth: .infinity, alignment: .leading)
+                //                .background(.teal)
+            }
+        }
+    }
+    
+    struct PatientListErrorView: View {
+        var body: some View {
+            Text("Error fetching data!")
+        }
     }
 }
 
@@ -109,6 +112,7 @@ struct PatientRow: View {
 //                .background(Color.cyan)
             
             Button {
+                
                 
             } label: {
                 Text(patientName)
@@ -133,17 +137,17 @@ struct PatientRow: View {
 }
 
 
-#Preview {
-    PatientListScreen(vm: PatientListViewModel(loader: LocalPatientListLoader()))
-}
+//#Preview {
+//    PatientListScreen(vm: PatientListViewModel(loader: LocalPatientListLoader(), coordinator: CoordinatorObject(visitLoader: LocalPatientVisitsLoader())))
+//}
 
-#Preview(traits: .sizeThatFitsLayout) {
-    PatientRow(patientName: "Sammy Longjohn")
-}
-
-#Preview(traits: .sizeThatFitsLayout) {
-    List {
-        PatientListLoadedView(patientList: MockData.shared.mockPatientList, date: "02/21/2024")
-    }
-    .listStyle(.plain)
-}
+//#Preview(traits: .sizeThatFitsLayout) {
+//    PatientRow(patientName: "Sammy Longjohn")
+//}
+//
+//#Preview(traits: .sizeThatFitsLayout) {
+//    List {
+//        PatientListLoadedView(patientList: MockData.shared.mockPatientList, dateString: "02-03-2024", action: {})
+//    }
+//    .listStyle(.plain)
+//}
