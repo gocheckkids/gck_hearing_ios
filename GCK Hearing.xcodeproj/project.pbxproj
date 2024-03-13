@@ -28,6 +28,9 @@
 		74B17F3C2B9B79C000527AA0 /* ResultDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B17F3B2B9B79C000527AA0 /* ResultDetailsView.swift */; };
 		74B17F3F2B9BCA0D00527AA0 /* MultiLocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B17F3E2B9BCA0D00527AA0 /* MultiLocationViewModel.swift */; };
 		74B17F412B9BCC3800527AA0 /* MultiLocationListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B17F402B9BCC3800527AA0 /* MultiLocationListView.swift */; };
+		74BB09FC2B9F914400E43779 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BB09FB2B9F914400E43779 /* LoginViewModel.swift */; };
+		74BB09FE2B9FA74300E43779 /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BB09FD2B9FA74300E43779 /* RootCoordinator.swift */; };
+		74BB0A002B9FAD4700E43779 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BB09FF2B9FAD4700E43779 /* View.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +56,9 @@
 		74B17F3B2B9B79C000527AA0 /* ResultDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultDetailsView.swift; sourceTree = "<group>"; };
 		74B17F3E2B9BCA0D00527AA0 /* MultiLocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiLocationViewModel.swift; sourceTree = "<group>"; };
 		74B17F402B9BCC3800527AA0 /* MultiLocationListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiLocationListView.swift; sourceTree = "<group>"; };
+		74BB09FB2B9F914400E43779 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		74BB09FD2B9FA74300E43779 /* RootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
+		74BB09FF2B9FAD4700E43779 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +97,7 @@
 				74B17F1B2B97A23200527AA0 /* Database */,
 				74B17F152B979EEA00527AA0 /* Entities */,
 				74B17F2D2B9A215500527AA0 /* Features */,
+				74B17F1C2B97CDBC00527AA0 /* Repositories */,
 				74B17F022B97989400527AA0 /* GCK_HearingApp.swift */,
 				74B17F062B97989600527AA0 /* Assets.xcassets */,
 				74B17F082B97989600527AA0 /* Preview Content */,
@@ -111,7 +118,6 @@
 			children = (
 				74B17F282B97F53C00527AA0 /* ViewModels */,
 				74B17F1F2B97D9F000527AA0 /* Views */,
-				74B17F1C2B97CDBC00527AA0 /* Repositories */,
 			);
 			path = PatientList;
 			sourceTree = "<group>";
@@ -169,6 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				74B17F242B97E87300527AA0 /* Color.swift */,
+				74BB09FF2B9FAD4700E43779 /* View.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -185,6 +192,7 @@
 			isa = PBXGroup;
 			children = (
 				74B17F042B97989400527AA0 /* LoginView.swift */,
+				74BB09FB2B9F914400E43779 /* LoginViewModel.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -193,6 +201,7 @@
 			isa = PBXGroup;
 			children = (
 				74B17F2B2B98D4A200527AA0 /* ScreeningCoordinator.swift */,
+				74BB09FD2B9FA74300E43779 /* RootCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -324,16 +333,19 @@
 				74B17F1E2B97CDEF00527AA0 /* PatientListLoader.swift in Sources */,
 				74B17F412B9BCC3800527AA0 /* MultiLocationListView.swift in Sources */,
 				74B17F142B979DCD00527AA0 /* PatientViewModel.swift in Sources */,
+				74BB09FC2B9F914400E43779 /* LoginViewModel.swift in Sources */,
 				74B17F302B9A217600527AA0 /* PatientDetailView.swift in Sources */,
 				74B17F352B9A93AF00527AA0 /* ScreeningViewModel.swift in Sources */,
 				74B17F3F2B9BCA0D00527AA0 /* MultiLocationViewModel.swift in Sources */,
 				74B17F3A2B9B75DE00527AA0 /* ResultDetailsViewModel.swift in Sources */,
+				74BB09FE2B9FA74300E43779 /* RootCoordinator.swift in Sources */,
 				74B17F222B97E82B00527AA0 /* SearchView.swift in Sources */,
 				74B17F1A2B97A0DE00527AA0 /* FakeDatabase.swift in Sources */,
 				74B17F032B97989400527AA0 /* GCK_HearingApp.swift in Sources */,
 				74B17F372B9A9CC400527AA0 /* ScreeningView.swift in Sources */,
 				74B17F2C2B98D4A200527AA0 /* ScreeningCoordinator.swift in Sources */,
 				74B17F172B979EFC00527AA0 /* PatientModel.swift in Sources */,
+				74BB0A002B9FAD4700E43779 /* View.swift in Sources */,
 				74B17F252B97E87300527AA0 /* Color.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -393,7 +405,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -450,7 +462,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -476,7 +488,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -506,7 +518,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
