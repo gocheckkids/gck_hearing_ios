@@ -31,6 +31,12 @@
 		74BB09FC2B9F914400E43779 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BB09FB2B9F914400E43779 /* LoginViewModel.swift */; };
 		74BB09FE2B9FA74300E43779 /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BB09FD2B9FA74300E43779 /* RootCoordinator.swift */; };
 		74BB0A002B9FAD4700E43779 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BB09FF2B9FAD4700E43779 /* View.swift */; };
+		74BB0A4D2BA21D6100E43779 /* ResultModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BB0A4C2BA21D6100E43779 /* ResultModels.swift */; };
+		74BB0A4F2BA21E4200E43779 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BB0A4E2BA21E4200E43779 /* SceneDelegate.swift */; };
+		74BB0A512BA21E7500E43779 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BB0A502BA21E7500E43779 /* AppDelegate.swift */; };
+		74BB0A532BA21FF200E43779 /* FirstCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BB0A522BA21FF200E43779 /* FirstCoordinator.swift */; };
+		74BB0A552BA220DC00E43779 /* ApplicationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BB0A542BA220DC00E43779 /* ApplicationCoordinator.swift */; };
+		74BB0A572BA2477200E43779 /* Task + Sleep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BB0A562BA2477200E43779 /* Task + Sleep.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +65,12 @@
 		74BB09FB2B9F914400E43779 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		74BB09FD2B9FA74300E43779 /* RootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
 		74BB09FF2B9FAD4700E43779 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		74BB0A4C2BA21D6100E43779 /* ResultModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultModels.swift; sourceTree = "<group>"; };
+		74BB0A4E2BA21E4200E43779 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		74BB0A502BA21E7500E43779 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		74BB0A522BA21FF200E43779 /* FirstCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstCoordinator.swift; sourceTree = "<group>"; };
+		74BB0A542BA220DC00E43779 /* ApplicationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationCoordinator.swift; sourceTree = "<group>"; };
+		74BB0A562BA2477200E43779 /* Task + Sleep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task + Sleep.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +113,8 @@
 				74B17F022B97989400527AA0 /* GCK_HearingApp.swift */,
 				74B17F062B97989600527AA0 /* Assets.xcassets */,
 				74B17F082B97989600527AA0 /* Preview Content */,
+				74BB0A4E2BA21E4200E43779 /* SceneDelegate.swift */,
+				74BB0A502BA21E7500E43779 /* AppDelegate.swift */,
 			);
 			path = "GCK Hearing";
 			sourceTree = "<group>";
@@ -125,6 +139,7 @@
 		74B17F152B979EEA00527AA0 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				74BB0A4B2BA21D5000E43779 /* Result Models */,
 				74B17F162B979EFC00527AA0 /* PatientModel.swift */,
 			);
 			path = Entities;
@@ -176,6 +191,7 @@
 			children = (
 				74B17F242B97E87300527AA0 /* Color.swift */,
 				74BB09FF2B9FAD4700E43779 /* View.swift */,
+				74BB0A562BA2477200E43779 /* Task + Sleep.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -202,6 +218,8 @@
 			children = (
 				74B17F2B2B98D4A200527AA0 /* ScreeningCoordinator.swift */,
 				74BB09FD2B9FA74300E43779 /* RootCoordinator.swift */,
+				74BB0A522BA21FF200E43779 /* FirstCoordinator.swift */,
+				74BB0A542BA220DC00E43779 /* ApplicationCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -209,8 +227,8 @@
 		74B17F2D2B9A215500527AA0 /* Features */ = {
 			isa = PBXGroup;
 			children = (
-				74B17F3D2B9BC9B500527AA0 /* Multi Location */,
 				74B17F382B9B75BA00527AA0 /* Results */,
+				74B17F3D2B9BC9B500527AA0 /* Multi Location */,
 				74B17F292B97F56400527AA0 /* Login */,
 				74B17F332B9A938C00527AA0 /* Screening */,
 				74B17F2E2B9A216200527AA0 /* PatientDetails */,
@@ -253,6 +271,14 @@
 				74B17F402B9BCC3800527AA0 /* MultiLocationListView.swift */,
 			);
 			path = "Multi Location";
+			sourceTree = "<group>";
+		};
+		74BB0A4B2BA21D5000E43779 /* Result Models */ = {
+			isa = PBXGroup;
+			children = (
+				74BB0A4C2BA21D6100E43779 /* ResultModels.swift */,
+			);
+			path = "Result Models";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -329,6 +355,7 @@
 				74B17F052B97989400527AA0 /* LoginView.swift in Sources */,
 				74B17F272B97EBD800527AA0 /* RoundedButton.swift in Sources */,
 				74B17F112B979AE400527AA0 /* PatientListView.swift in Sources */,
+				74BB0A572BA2477200E43779 /* Task + Sleep.swift in Sources */,
 				74B17F322B9A37FC00527AA0 /* PatientDetailViewModel.swift in Sources */,
 				74B17F1E2B97CDEF00527AA0 /* PatientListLoader.swift in Sources */,
 				74B17F412B9BCC3800527AA0 /* MultiLocationListView.swift in Sources */,
@@ -336,17 +363,22 @@
 				74BB09FC2B9F914400E43779 /* LoginViewModel.swift in Sources */,
 				74B17F302B9A217600527AA0 /* PatientDetailView.swift in Sources */,
 				74B17F352B9A93AF00527AA0 /* ScreeningViewModel.swift in Sources */,
+				74BB0A532BA21FF200E43779 /* FirstCoordinator.swift in Sources */,
 				74B17F3F2B9BCA0D00527AA0 /* MultiLocationViewModel.swift in Sources */,
 				74B17F3A2B9B75DE00527AA0 /* ResultDetailsViewModel.swift in Sources */,
+				74BB0A552BA220DC00E43779 /* ApplicationCoordinator.swift in Sources */,
+				74BB0A512BA21E7500E43779 /* AppDelegate.swift in Sources */,
 				74BB09FE2B9FA74300E43779 /* RootCoordinator.swift in Sources */,
 				74B17F222B97E82B00527AA0 /* SearchView.swift in Sources */,
 				74B17F1A2B97A0DE00527AA0 /* FakeDatabase.swift in Sources */,
 				74B17F032B97989400527AA0 /* GCK_HearingApp.swift in Sources */,
 				74B17F372B9A9CC400527AA0 /* ScreeningView.swift in Sources */,
 				74B17F2C2B98D4A200527AA0 /* ScreeningCoordinator.swift in Sources */,
+				74BB0A4D2BA21D6100E43779 /* ResultModels.swift in Sources */,
 				74B17F172B979EFC00527AA0 /* PatientModel.swift in Sources */,
 				74BB0A002B9FAD4700E43779 /* View.swift in Sources */,
 				74B17F252B97E87300527AA0 /* Color.swift in Sources */,
+				74BB0A4F2BA21E4200E43779 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -494,7 +526,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.learning.GCK-Hearing";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.gocheckkids.gck-hearing";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -524,7 +556,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.learning.GCK-Hearing";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.gocheckkids.gck-hearing";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
