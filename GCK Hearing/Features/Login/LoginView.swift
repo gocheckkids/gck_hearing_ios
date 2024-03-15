@@ -14,6 +14,7 @@ struct LoginView: View {
     @State private var password: String = ""
     @State private var isLoggedIn: Bool = false
     
+    
     @ObservedObject var loginVM: LoginViewModel
     
     var body: some View {
@@ -43,22 +44,34 @@ struct LoginView: View {
                 .frame(height: 30)
                
             Group {
-                RoundedButton(title: "Login Button", color: .cyan) {
-                    Task {
-                        await loginVM.login()
-                    }
+                Button {
+                    isLoggedIn = true
+                    loginVM.loginAction?(isLoggedIn, loginVM.isMultilocationEnabled)
+                } label: {
+                    Text("Login")
+                        .foregroundColor(.white)
+                        .padding(.vertical, 10)
+                        .padding(.horizontal, 40)
+                        .background(Color.blueTheme.accentDark)
+                        .cornerRadius(5)
                 }
                 Button {
                     
                 } label: {
                     Text("Forgot Password")
+                        .foregroundColor(Color.deepBlueTheme.accent)
                 }
                 Button {
                     
                 } label: {
                     Text("About")
+                        .foregroundColor(Color.deepBlueTheme.accent)
                 }
             }
+            Spacer()
+            Toggle("Enable Multilocation", isOn: $loginVM.isMultilocationEnabled)
+                .foregroundColor(Color.blueTheme.accentDark)
+                .padding()
             
             }
         .frame(maxHeight: .infinity, alignment: .top)

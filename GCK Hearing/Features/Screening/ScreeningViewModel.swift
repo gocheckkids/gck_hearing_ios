@@ -21,16 +21,24 @@ class ScreeningViewModel: ObservableObject {
     }
     
     @Published var screeningState: ScreeningStates = .instruction
+    @Published var isPlayingSoundNow: Bool = false
     
-    var currentStep: Int = 0
-    var frequencies = [100,200,300]
+    var screeningCompleteAction: ((Patient, ResultDetails) -> ())? = {_,_ in}
+    
+    var menuExitAction: (() ->())? = {}
+    
+    var currentStep: Int = 1
+    var frequencies = [1000, 2000]
+    let stepCount: Int
     var currentEar: TestEar = .left
+    var currentFrequencyIndex = 0
     var instructionText = "When ready, press PLAY to send the tone"
     
     let patient: Patient
     
     init(patient: Patient) {
         self.patient = patient
+        stepCount = frequencies.count * 2
     }
     
     
@@ -42,14 +50,20 @@ class ScreeningViewModel: ObservableObject {
     
     
     func playSound() async {
-        await MainActor.run {
-            screeningState = .playing
+        screeningState = .playing
+        let rand = Int.random(in: 0...2)
+        // after a random # of seconds (1-4s), play the sound for 1 second, then complete
+        print("Waiting to play sound")
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(rand)) { [weak self] in
+                self?.isPlayingSoundNow = true
+            print("Sound ON")
+            // actual playing of the sound here, for 1 second, then turn off
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) { [weak self] in
+                print("Sound OFF")
+                self?.isPlayingSoundNow = false
+                self?.screeningState = .completedStep
+            }
         }
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) { [weak self] in
-            self?.screeningState = .completedStep
-        }
-        
     }
     
     func answerQuestion(isCorrect: Bool)  {
@@ -59,24 +73,32 @@ class ScreeningViewModel: ObservableObject {
     }
     
     func handleFlow() {
-        // Left done, move to right
-        if (currentEar == .left && currentStep == frequencies.count - 1) {
+        // Right done? Test complete
+        if (currentEar == .right && currentStep == (frequencies.count*2)) {
+            let details = ResultDetails(date: "02-10-2024")
+            screeningCompleteAction?(patient, details)
+            return
+        }
+        // Or, if done on left, go to right
+        else if (currentEar == .left && currentStep == frequencies.count) {
             currentEar = .right
-            currentStep = 0
+            currentStep += 1
+            currentFrequencyIndex = 0
             screeningState = .instruction
         }
         // End of screening
-        else if (currentEar == .right && currentStep == frequencies.count - 1) {
-            // <ResultCoordinator.go(<ResultModel>)
-            return
-        }
+//        else if (currentEar == .right && currentStep == frequencies.count - 1) {
+//            // <ResultCoordinator.go(<ResultModel>)
+//            let details = ResultDetails(date: "02-10-2024")
+//            screeningCompleteAction?(patient, details)
+//            return
+//        }
         // else, continue screening
         else {
+            currentFrequencyIndex += 1
             currentStep += 1
             screeningState = .instruction
         }
-        
-        
     }
     
 }

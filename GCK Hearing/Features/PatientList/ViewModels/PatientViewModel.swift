@@ -17,11 +17,13 @@ class PatientListViewModel: ObservableObject {
     @Published var allPatients: [Patient] = []
     @Published var searchText = ""
     
+    var userTapAction: ((Patient) -> ())? = { _ in }
+    var screenTapAction: ((Patient) -> ())? = { _ in }
+    
     var patientListLoader: PatientListLoader
     
     init(loader: PatientListLoader) {
         self.patientListLoader = loader
-
     }
     
     func loadPatients() async {

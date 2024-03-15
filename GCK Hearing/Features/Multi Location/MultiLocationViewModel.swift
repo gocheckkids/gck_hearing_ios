@@ -17,6 +17,8 @@ class MultiLocationViewModel: ObservableObject {
     @Published var allLocaions: [String] = []
     @Published var searchText = ""
     
+    @Published var locationTappedAction: (()->())? = {}
+    
     var locationListLoader: LocationListLoader
     
     init(loader: LocationListLoader) {

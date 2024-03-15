@@ -21,13 +21,13 @@ class PatientDetailViewModel: ObservableObject {
     // Belongs in View Model instead?
     @Published var recentResults:[ResultsModel] = []
     
-    var resultCoordinator: (() -> ())?
-    private unowned let screeningCoordinator: CoordinatorObject
+    var backAction: (() -> ())? = {}
+    var tapScreeningAction: ((Patient) -> ())? = {_ in}
+    var tapResultAction: (() -> ())? = {}
     
-    init(patient: Patient, resultCoordinator: ( () -> Void)? = nil, screeningCoordinator: CoordinatorObject, loader: PatientVisitLoader) {
-        self.screeningCoordinator = screeningCoordinator
+    init(patient: Patient, loader: PatientVisitLoader) {
+//        self.screeningCoordinator = screeningCoordinator
         self.patient = patient
-        self.resultCoordinator = resultCoordinator
         self.patientVisitLoader = loader
     }
     

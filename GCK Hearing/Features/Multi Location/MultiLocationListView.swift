@@ -20,7 +20,9 @@ struct MultiLocationListView: View {
                     case .loading:
                         LocationListLoadingView()
                     case .success:
-                        LocationListLoadedView(locationList: locationVM.allLocaions)
+                        LocationListLoadedView(locationList: locationVM.allLocaions) {
+                            locationVM.locationTappedAction?()
+                        }
                         
                     case .failed:
                         LocationListErrorView()
@@ -33,7 +35,7 @@ struct MultiLocationListView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
-                    RoundedButton(title: "Menu", color: .cyan, action: {})
+                    RoundedButton(title: "Menu", color: Color.deepBlueTheme.accent, action: {})
                 }
             }
         }
@@ -50,20 +52,29 @@ extension MultiLocationListView {
     struct LocationListLoadingView: View {
         var body: some View {
             ProgressView()
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
     }
     
     struct LocationListLoadedView: View {
         let locationList: [String]
+        var tapAction: (() -> ())? = {}
      
         var body: some View {
             Section {
                 ForEach(locationList, id: \.self) { location in
-                    Text(location)
-                        .padding()
-                        .onTapGesture {
-                            // Coordinate to patientView for that clinic
-                        }
+                    HStack {
+                        Text(location)
+                        Spacer()
+                        Image(systemName: "chevron.forward")
+                            .foregroundColor(Color.blueTheme.accentDark)
+                    }
+                    .padding()
+                    .onTapGesture {
+                        // Coordinate to patientView for that clinic
+                        tapAction?()
+                        
+                }
                         
                 }
                 

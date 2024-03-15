@@ -15,7 +15,6 @@ struct RoundedButton: View {
     var body: some View {
         Button(action: action) {
             Text(title)
-
                 .foregroundColor(.white)
                 .padding(10)
                 .background(color)
@@ -24,7 +23,7 @@ struct RoundedButton: View {
     }
 }
 
-#Preview(traits: .sizeThatFitsLayout) {
+#Preview {
     RoundedButton(title: "Preview", color: .black, action: {})
         
 }

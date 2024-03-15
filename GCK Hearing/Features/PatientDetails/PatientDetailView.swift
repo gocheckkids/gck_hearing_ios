@@ -14,29 +14,40 @@ struct PatientDetailView: View {
     var body: some View {
         NavigationView {
             VStack(spacing: 30) {
-                patientInfoSection
+                PatientInfoSectionView(patient: detailVm.patient)
+                RoundedButton(title: "Conduct Pure Tone Screening", color: Color.theme.accent) {
+                    // Go to screening page
+                    detailVm.tapScreeningAction?(detailVm.patient)
+                }
+                Spacer()
+                    .frame(height: 50)
                 switch detailVm.loadState {
                 case .loading:
-                    PatientListLoadingView()
+                    ProgressView()
+                        .frame(height: 220)
+                        .padding()
                 case .success:
                     visitSection
                 case .failed:
-                    PatientListErrorView()
+                    EmptyView()
+                    //                    PatientListErrorView()
                 }
-//                visitSection
-                RoundedButton(title: "Conduct Pure Tone Screening", color: .black) {
-                    // Go to screening page
-                }
+                //                visitSection
+                
             }
             .frame(alignment: .top)
+            .padding(.horizontal)
             .navigationTitle("Patient Profile")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
-                    RoundedButton(title: "Back", color: .black, action: {})
+                    RoundedButton(title: "Back", color: Color.blueTheme.accentDark) {
+                        detailVm.backAction?()
+                    }
                 }
             }
         }
+        
         .task {
             await detailVm.getLatestScreenings()
         }
@@ -50,17 +61,31 @@ struct PatientDetailView: View {
     }
 }
 
-extension PatientDetailView {
-    private var patientInfoSection: some View {
+struct PatientInfoSectionView: View {
+    let patient: Patient
+    var body: some View {
         VStack(alignment: .leading, spacing: 10) {
-            Text("First Name: \(detailVm.patient.firstName)")
-            Text("Last Name: \(detailVm.patient.lastName)")
-            Text("Date Of Birth: \(detailVm.patient.dob)")
+            Text("First Name: \(patient.firstName)")
+            Text("Last Name: \(patient.lastName)")
+            Text("Date Of Birth: \(patient.dob)")
         }
         .padding()
         .frame(maxWidth: .infinity, alignment: .leading)
         .border(.black)
     }
+}
+
+extension PatientDetailView {
+//    private var patientInfoSection: some View {
+//        VStack(alignment: .leading, spacing: 10) {
+//            Text("First Name: \(detailVm.patient.firstName)")
+//            Text("Last Name: \(detailVm.patient.lastName)")
+//            Text("Date Of Birth: \(detailVm.patient.dob)")
+//        }
+//        .padding()
+//        .frame(maxWidth: .infinity, alignment: .leading)
+//        .border(.black)
+//    }
     
     private var visitSection: some View {
         // Show last 3 visits with option to show more, may require own ViewModel
@@ -71,17 +96,18 @@ extension PatientDetailView {
             
             ForEach(detailVm.recentResults) { summary in
                 HStack {
-                    RoundedButton(title: summary.date, color: .black) {
+                    RoundedButton(title: summary.date, color: Color.deepBlueTheme.accent) {
                         
                     }
                     Text(summary.riskFactorSummary)
                         .frame(maxWidth: .infinity)
+                        .foregroundColor(summary.referralResult ? .red : .black)
                         .padding(8)
                         .border(.black)
                 }
             }
      
-            RoundedButton(title: "View More", color: .black) {
+            RoundedButton(title: "View More", color: Color.deepBlueTheme.accent) {
                 // change Binded state, new view etc.
             }
         }
