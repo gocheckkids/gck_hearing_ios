@@ -64,13 +64,19 @@ class MockData {
         "Clinical Practice #10"
     ]
     
-    var mockPatient = Patient(id: 003, firstName: "Jackie", lastName: "Bulb", dob: "2-05-2019")
+    var mockPatient = Patient(id: 003, firstName: "Jackie", lastName: "Bulb", dob: "02/05/2019")
     
     var mockPatientList = [
-        Patient(id: 01, firstName: "Jahn", lastName: "Smith", dob: "2019-04-01"),
-        Patient(id: 02, firstName: "Bada", lastName: "Pinkei", dob: "2018-02-18"),
-        Patient(id: 03, firstName: "Jimmy", lastName: "Gordon", dob: "2014-01-21"),
-        Patient(id: 04, firstName: "Zoey", lastName: "Oneoone", dob: "2016-10-08")]
+        Patient(id: 01, firstName: "Jahn", lastName: "Smith", dob: "04/01/2019"),
+        Patient(id: 02, firstName: "Dada", lastName: "Pinky", dob: "02/18/2018"),
+        Patient(id: 03, firstName: "Jimmy", lastName: "Gordon", dob: "01/21/2017"),
+        Patient(id: 04, firstName: "Zoey", lastName: "Oneoone", dob: "10/08/2016")]
+    
+//    var mockPatientList2 = [
+//        Patient(id: 01, firstName: "Jahn", lastName: "Smith", dob: "2019-04-01"),
+//        Patient(id: 02, firstName: "Dada", lastName: "Pinky", dob: "2018-02-18"),
+//        Patient(id: 03, firstName: "Jimmy", lastName: "Gordon", dob: "2014-01-21"),
+//        Patient(id: 04, firstName: "Zoey", lastName: "Oneoone", dob: "2016-10-08")]
     
     var mockPatientVisits = [
         ResultsModel(date: "01/10/24", referralResult: true),
@@ -78,5 +84,5 @@ class MockData {
         ResultsModel(date: "11/04/23", referralResult: false)
     ]
     
-    var mockPatientResultDetails = ResultDetails(date: "12-01-23")
+    var mockPatientResultDetails = ResultDetails(date: "12/01/23")
 }
