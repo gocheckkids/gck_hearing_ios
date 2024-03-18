@@ -8,7 +8,7 @@
 import Foundation
 
 protocol Coordinator {
-    func navigate() -> Void
+//    func navigate() -> Void
 }
 
 protocol ScreeningCoordinator: Coordinator {

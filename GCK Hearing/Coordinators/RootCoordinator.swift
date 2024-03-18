@@ -38,13 +38,13 @@ class CoordinatorObject: ObservableObject, Identifiable {
     init(listLoader: PatientListLoader, visitLoader: PatientVisitLoader) {
         self.listLoader = listLoader
         self.visitLoader = visitLoader
-        self.patientListVM = PatientListViewModel(loader: listLoader, coordinator: self)
+        self.patientListVM = PatientListViewModel(loader: listLoader)
         
     }
 
     func openDetails(_ patient: Patient) {
         print("open details")
-        self.patientDetailVM = PatientDetailViewModel(patient: patient, screeningCoordinator: self, loader: visitLoader)
+        self.patientDetailVM = PatientDetailViewModel(patient: patient, loader: visitLoader)
     }
     
     func openScreening(for patient: Patient) {
