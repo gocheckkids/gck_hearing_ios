@@ -64,33 +64,33 @@ class MockData {
         "Clinical Practice #10"
     ]
     
-    var mockPatient = Patient(id: 003, firstName: "Jackie", lastName: "Bulb", birthdate: Date.distantPast)
+    var mockPatient = Patient(id: 003, firstName: "Jackie", lastName: "Bulb", birthdate: Date.randomDate())
     
     lazy var mockPatientList1 = [
-        Patient(id: 01, firstName: "Jahn", lastName: "Smith", birthdate: Date.distantPast),
-        Patient(id: 02, firstName: "Dada", lastName: "Pinky", birthdate: Date.distantPast),
-        Patient(id: 03, firstName: "Jimmy", lastName: "Gordon", birthdate: Date.distantPast),
-        Patient(id: 04, firstName: "Zoey", lastName: "Oneoone", birthdate: Date.distantPast)
+        Patient(id: 01, firstName: "Jahn", lastName: "Smith", birthdate: Date.randomDate()),
+        Patient(id: 02, firstName: "Dada", lastName: "Pinky", birthdate: Date.randomDate()),
+        Patient(id: 03, firstName: "Jimmy", lastName: "Gordon", birthdate: Date.randomDate()),
+        Patient(id: 04, firstName: "Zoey", lastName: "Oneoone", birthdate: Date.randomDate())
     ]
      
     lazy var mockPatientList2 = [
-        Patient(id: 05, firstName: "Emma", lastName: "Johnson", birthdate: Date.distantPast),
-        Patient(id: 06, firstName: "Michael", lastName: "Chang", birthdate: Date.distantPast),
-        Patient(id: 07, firstName: "Sophia", lastName: "Martinez", birthdate: Date.distantPast),
-        Patient(id: 08, firstName: "Alexander", lastName: "Lee", birthdate: Date.distantPast),
+        Patient(id: 05, firstName: "Emma", lastName: "Johnson", birthdate: Date.randomDate()),
+        Patient(id: 06, firstName: "Michael", lastName: "Chang", birthdate: Date.randomDate()),
+        Patient(id: 07, firstName: "Sophia", lastName: "Martinez", birthdate: Date.randomDate()),
+        Patient(id: 08, firstName: "Alexander", lastName: "Lee", birthdate: Date.randomDate()),
         ]
     
     lazy var mockPatientList3 = [
-        Patient(id: 09, firstName: "Bubbles", lastName: "McGee", birthdate: Date.distantPast),
-        Patient(id: 10, firstName: "Sunny", lastName: "Delight", birthdate: Date.distantPast),
-        Patient(id: 11, firstName: "Bartholomew", lastName: "Fiddlesticks", birthdate: Date.distantPast),
-        Patient(id: 12, firstName: "Princess", lastName: "Sparklepants", birthdate: Date.distantPast),
+        Patient(id: 09, firstName: "Bubbles", lastName: "McGee", birthdate: Date.randomDate()),
+        Patient(id: 10, firstName: "Sunny", lastName: "Delight", birthdate: Date.randomDate()),
+        Patient(id: 11, firstName: "Bartholomew", lastName: "Fiddlesticks", birthdate: Date.randomDate()),
+        Patient(id: 12, firstName: "Princess", lastName: "Sparklepants", birthdate: Date.randomDate()),
         ]
     
     lazy var mockDayVisitsList = [
         DayVisits(visitDate: Date.now, patientList: mockPatientList1),
-        DayVisits(visitDate: Date.distantPast, patientList: mockPatientList2),
-        DayVisits(visitDate: Date.distantPast, patientList: mockPatientList3)
+        DayVisits(visitDate: Date(year: 2023, month: 12, day: 30), patientList: mockPatientList2),
+        DayVisits(visitDate: Date(year: 2023, month: 12, day: 15), patientList: mockPatientList3)
     ]
     
     var mockPatientVisits = [
