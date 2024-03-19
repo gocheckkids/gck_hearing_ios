@@ -28,6 +28,7 @@
 		74B17F3C2B9B79C000527AA0 /* ResultDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B17F3B2B9B79C000527AA0 /* ResultDetailsView.swift */; };
 		74B17F3F2B9BCA0D00527AA0 /* MultiLocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B17F3E2B9BCA0D00527AA0 /* MultiLocationViewModel.swift */; };
 		74B17F412B9BCC3800527AA0 /* MultiLocationListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B17F402B9BCC3800527AA0 /* MultiLocationListView.swift */; };
+		74B688952BA8EE2C00920BA8 /* AddPatientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B688942BA8EE2C00920BA8 /* AddPatientView.swift */; };
 		74BB09FC2B9F914400E43779 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BB09FB2B9F914400E43779 /* LoginViewModel.swift */; };
 		74BB09FE2B9FA74300E43779 /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BB09FD2B9FA74300E43779 /* RootCoordinator.swift */; };
 		74BB0A002B9FAD4700E43779 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BB09FF2B9FAD4700E43779 /* View.swift */; };
@@ -62,6 +63,7 @@
 		74B17F3B2B9B79C000527AA0 /* ResultDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultDetailsView.swift; sourceTree = "<group>"; };
 		74B17F3E2B9BCA0D00527AA0 /* MultiLocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiLocationViewModel.swift; sourceTree = "<group>"; };
 		74B17F402B9BCC3800527AA0 /* MultiLocationListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiLocationListView.swift; sourceTree = "<group>"; };
+		74B688942BA8EE2C00920BA8 /* AddPatientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPatientView.swift; sourceTree = "<group>"; };
 		74BB09FB2B9F914400E43779 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		74BB09FD2B9FA74300E43779 /* RootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
 		74BB09FF2B9FAD4700E43779 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				74B17F102B979AE400527AA0 /* PatientListView.swift */,
+				74B688942BA8EE2C00920BA8 /* AddPatientView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -373,6 +376,7 @@
 				74B17F1A2B97A0DE00527AA0 /* FakeDatabase.swift in Sources */,
 				74B17F032B97989400527AA0 /* GCK_HearingApp.swift in Sources */,
 				74B17F372B9A9CC400527AA0 /* ScreeningView.swift in Sources */,
+				74B688952BA8EE2C00920BA8 /* AddPatientView.swift in Sources */,
 				74B17F2C2B98D4A200527AA0 /* ScreeningCoordinator.swift in Sources */,
 				74BB0A4D2BA21D6100E43779 /* ResultModels.swift in Sources */,
 				74B17F172B979EFC00527AA0 /* PatientModel.swift in Sources */,

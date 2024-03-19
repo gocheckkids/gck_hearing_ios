@@ -21,20 +21,32 @@ class LocalLocationListLoader: LocationListLoader {
 
 protocol PatientListLoader {
     func getPatients() async -> [Patient]
+    func addPatient(_ patient: Patient) async -> ()
 }
+
 
 // Local Implementation
 class LocalPatientListLoader: PatientListLoader {
+    func addPatient(_ patient: Patient) async {
+        // Add to start of array to mimic latest patient add
+        MockData.shared.mockPatientList.insert(patient, at: 0)
+    }
+    
     func getPatients() async -> [Patient] {
-//        try? await Task.sleep(seconds: 2)
+        try? await Task.sleep(seconds: 2)
         return MockData.shared.mockPatientList
     }
 }
 
 // API Implementation
 class RemotePatientListLoadeer: PatientListLoader {
+    func addPatient(_ patient: Patient) async {
+        // Add patient through API
+    }
+    
     
     func getPatients() async -> [Patient] {
+        // Load patients using API
         return []
     }
 }

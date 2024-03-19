@@ -14,11 +14,15 @@ class PatientListViewModel: ObservableObject {
     }
     
     @Published var loadState = PatientListLoadingState.loading
-    @Published var allPatients: [Patient] = []
+    var allPatients: [Patient] = []
     @Published var searchText = ""
     
     var userTapAction: ((Patient) -> ())? = { _ in }
     var screenTapAction: ((Patient) -> ())? = { _ in }
+    
+    // Isolate to a Menu coordinator
+    var addPatientAction: (() -> ())? = {}
+    var doneAddingPatientAction: (() -> ())? = {}
     
     var patientListLoader: PatientListLoader
     
@@ -26,9 +30,15 @@ class PatientListViewModel: ObservableObject {
         self.patientListLoader = loader
     }
     
+    @MainActor
     func loadPatients() async {
-        loadState = .loading
-        await allPatients = patientListLoader.getPatients()
-        loadState = .success
+            loadState = .loading
+            await allPatients = patientListLoader.getPatients()
+            loadState = .success
+    }
+    
+    // should be a network call, update in DB, then update on screen
+    func addPatient(_ patient: Patient) async {
+        await patientListLoader.addPatient(patient)
     }
 }

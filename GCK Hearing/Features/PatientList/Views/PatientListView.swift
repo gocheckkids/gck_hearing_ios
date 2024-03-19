@@ -15,7 +15,6 @@ struct PatientListScreen: View {
     }
     
     var body: some View {
-        
         NavigationView {
             VStack {
                 //                SearchBarView(searchText: $vm.searchText, placeholderText: "Search for a patient ...")
@@ -27,21 +26,6 @@ struct PatientListScreen: View {
                         PatientListLoadingView()
                     case .success:
                         PatientListLoadedView(patientList: vm.allPatients, dateString: "02/11/2024", detailAction: { patient in
-                            vm.userTapAction?(patient)
-                        }, screenAction: { patient in
-                            vm.screenTapAction?(patient)
-                        })
-                        PatientListLoadedView(patientList: vm.allPatients, dateString: "02/05/2024", detailAction: { patient in
-                            vm.userTapAction?(patient)
-                        }, screenAction: { patient in
-                            vm.screenTapAction?(patient)
-                        })
-                        PatientListLoadedView(patientList: vm.allPatients, dateString: "01/29/2024", detailAction: { patient in
-                            vm.userTapAction?(patient)
-                        }, screenAction: { patient in
-                            vm.screenTapAction?(patient)
-                        })
-                        PatientListLoadedView(patientList: vm.allPatients, dateString: "01/25/2024", detailAction: { patient in
                             vm.userTapAction?(patient)
                         }, screenAction: { patient in
                             vm.screenTapAction?(patient)
@@ -61,10 +45,11 @@ struct PatientListScreen: View {
                     RoundedButton(title: "Menu", color: Color.deepBlueTheme.accentDark, action: {})
                 }
                 ToolbarItem(placement: .topBarTrailing) {
-                    RoundedButton(title: "Add", color: Color.deepBlueTheme.accentDark, action: {})
+                    RoundedButton(title: "Add", color: Color.blueTheme.accentDark, action: {
+                        vm.addPatientAction?()
+                    })
                 }
             }
-            
             .onAppear {
                 Task {
                     await vm.loadPatients()

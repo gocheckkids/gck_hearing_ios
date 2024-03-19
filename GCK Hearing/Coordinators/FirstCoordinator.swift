@@ -57,6 +57,17 @@ class FirstTabCoodinator: NSObject, Coordinator {
         patientListVM?.userTapAction = { [weak self] patient in
             self?.goToDetail(of: patient)
         }
+        
+        // Isolate into separate method?
+        // List -> Add Patient
+        patientListVM?.addPatientAction = { [weak self] in
+            self?.goToAddPatient()
+        }
+        // Add Patient -> Back (List)
+        patientListVM?.doneAddingPatientAction = { [weak self] in
+            self?.rootViewController.popViewController(animated: true)
+        }
+        
         patientListVM?.screenTapAction = { [weak self] patient in
             self?.goToScreening(for: patient)
         }
@@ -159,12 +170,13 @@ class FirstTabCoodinator: NSObject, Coordinator {
         let resultViewController = UIHostingController(rootView: ResultDetailsView(resultDetailVM: self.resultVM ?? vm))
         rootViewController.pushViewController(resultViewController, animated: true)
     }
-//
-//    func goToAction2View(passing num: Int) {
-//        let action2ViewController = UIHostingController(rootView: Action2View(num: num, doneAction: popToRoot))
-//        action2ViewController.navigationItem.hidesBackButton = true
-//        rootViewController.pushViewController(action2ViewController, animated: true)
-//    }
+    
+    // MARK: Menu Actions
+    func goToAddPatient() {
+        let backupVM = PatientListViewModel(loader: LocalPatientListLoader())
+        let addPatientVC = UIHostingController(rootView: AddPatientView(vm: self.patientListVM ?? backupVM))
+        rootViewController.pushViewController(addPatientVC, animated: true)
+    }
     
     func popToRoot() {
         rootViewController.popToRootViewController(animated: false)
