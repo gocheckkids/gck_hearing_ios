@@ -6,3 +6,12 @@
 //
 
 import Foundation
+
+struct DayVisits: Identifiable {
+    
+    var id = UUID()
+    
+    //EX) 3/5/24 -> [P1, P2, P5]
+    var visitDate: Date
+    var patientList: [Patient]
+}

@@ -14,7 +14,7 @@ class PatientListViewModel: ObservableObject {
     }
     
     @Published var loadState = PatientListLoadingState.loading
-    var allPatients: [Patient] = []
+    var allPatients: [DayVisits] = []
     @Published var searchText = ""
     
     var userTapAction: ((Patient) -> ())? = { _ in }

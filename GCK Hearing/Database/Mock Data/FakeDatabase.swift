@@ -80,9 +80,17 @@ class MockData {
         Patient(id: 08, firstName: "Alexander", lastName: "Lee", birthdate: Date.distantPast),
         ]
     
+    lazy var mockPatientList3 = [
+        Patient(id: 09, firstName: "Bubbles", lastName: "McGee", birthdate: Date.distantPast),
+        Patient(id: 10, firstName: "Sunny", lastName: "Delight", birthdate: Date.distantPast),
+        Patient(id: 11, firstName: "Bartholomew", lastName: "Fiddlesticks", birthdate: Date.distantPast),
+        Patient(id: 12, firstName: "Princess", lastName: "Sparklepants", birthdate: Date.distantPast),
+        ]
+    
     lazy var mockDayVisitsList = [
         DayVisits(visitDate: Date.now, patientList: mockPatientList1),
-        DayVisits(visitDate: Date.distantPast, patientList: mockPatientList2)
+        DayVisits(visitDate: Date.distantPast, patientList: mockPatientList2),
+        DayVisits(visitDate: Date.distantPast, patientList: mockPatientList3)
     ]
     
     var mockPatientVisits = [

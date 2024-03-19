@@ -25,11 +25,14 @@ struct PatientListScreen: View {
                     case .loading:
                         PatientListLoadingView()
                     case .success:
-                        PatientListLoadedView(patientList: vm.allPatients, dateString: "02/11/2024", detailAction: { patient in
-                            vm.userTapAction?(patient)
-                        }, screenAction: { patient in
-                            vm.screenTapAction?(patient)
-                        })
+                        ForEach(vm.allPatients) { dayVisit in
+                            PatientListLoadedView(visits: dayVisit, detailAction: { patient in
+                                vm.userTapAction?(patient)
+                            }, screenAction: { patient in
+                                vm.screenTapAction?(patient)
+                            })
+                        }
+                        
                     case .failed:
                         PatientListErrorView()
                     }
@@ -70,14 +73,14 @@ extension PatientListScreen {
     }
     
     struct PatientListLoadedView: View {
-        let patientList: [Patient]
-        let dateString: String
+        let visits: DayVisits
+        
         let detailAction: (Patient) -> Void
         let screenAction: (Patient) -> Void
         
         var body: some View {
             Section {
-                    ForEach(patientList) { patient in
+                ForEach(visits.patientList) { patient in
                         HStack {
                             PatientRow(patientName: patient.fullName)
                                 .onTapGesture {
@@ -95,7 +98,7 @@ extension PatientListScreen {
                 .listRowInsets(.init(top: 0, leading: 10, bottom: 5, trailing: 10))
                 .listRowSeparator(.hidden, edges: .all)
             } header: {
-                Text(dateString)
+                Text(visits.visitDate.formatted(date: .abbreviated, time: .omitted))
                 //                .frame(maxWidth: .infinity, alignment: .leading)
                 //                .background(.teal)
             }
