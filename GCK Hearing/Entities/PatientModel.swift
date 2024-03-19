@@ -12,7 +12,9 @@ struct Patient:Identifiable {
     var id: Int
     var firstName: String
     var lastName: String
-    var dob: String
+    var birthdate: Date
+    
+    
     
 //    var age: Int {
 //            let now = Date()
@@ -25,11 +27,15 @@ struct Patient:Identifiable {
         return (firstName + " " + lastName)
     }
     
-    init(id: Int, firstName: String, lastName: String, dob: String) {
+    var dob: String {
+        return birthdate.formatted(date: .numeric, time: .omitted)
+    }
+    
+    init(id: Int, firstName: String, lastName: String, birthdate: Date) {
         self.id = id
         self.firstName = firstName
         self.lastName = lastName
-        self.dob = dob
+        self.birthdate = birthdate
     }
     
     
