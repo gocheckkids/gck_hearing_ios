@@ -32,10 +32,10 @@ class CoordinatorObject: ObservableObject, Identifiable {
     @Published var screeningVM: ScreeningViewModel?
     @Published var resultVM: ResultDetailsViewModel?
     
-    private let listLoader: PatientListLoader
+    private let listLoader: PatientRepository
     private let visitLoader: PatientVisitLoader
 
-    init(listLoader: PatientListLoader, visitLoader: PatientVisitLoader) {
+    init(listLoader: PatientRepository, visitLoader: PatientVisitLoader) {
         self.listLoader = listLoader
         self.visitLoader = visitLoader
         self.patientListVM = PatientListViewModel(loader: listLoader)

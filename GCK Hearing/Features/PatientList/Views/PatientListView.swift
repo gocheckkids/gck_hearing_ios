@@ -25,20 +25,34 @@ struct PatientListScreen: View {
                     case .loading:
                         PatientListLoadingView()
                     case .success:
-                        ForEach(vm.allPatients) { dayVisit in
+                        ForEach(vm.isSearching ? vm.filteredPatients : vm.allPatients) { dayVisit in
                             PatientListLoadedView(visits: dayVisit, detailAction: { patient in
                                 vm.userTapAction?(patient)
                             }, screenAction: { patient in
                                 vm.screenTapAction?(patient)
                             })
                         }
-                        
                     case .failed:
                         PatientListErrorView()
                     }
                 }
                 .searchable(text: $vm.searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "Find patient by name or ID")
+                .onSubmit(of: .search) {
+                    Task {
+                        await vm.searchPatient(keyword: vm.searchText)
+                    }
+                }
+//                .onChange(of: vm.debouncedSearchText) { keyword in
+//                    Task {
+//                        await vm.searchPatient(keyword: keyword)
+//                    }
+//                }
                 .listStyle(.plain)
+//                .overlay {
+//                    if !vm.debouncedSearchText.isEmpty {
+//                        PatientSearchView(filteredPatients: MockData.shared.mockPatientList1)
+//                    }
+//                }
             }
             .navigationTitle("Patients")
             .navigationBarTitleDisplayMode(.inline)
@@ -98,7 +112,7 @@ extension PatientListScreen {
                 .listRowInsets(.init(top: 0, leading: 10, bottom: 5, trailing: 10))
                 .listRowSeparator(.hidden, edges: .all)
             } header: {
-                Text(visits.visitDate.formatted(date: .abbreviated, time: .omitted))
+                Text(visits.visitDate.formattedAsDateString())
                 //                .frame(maxWidth: .infinity, alignment: .leading)
                 //                .background(.teal)
             }
@@ -110,6 +124,21 @@ extension PatientListScreen {
             Text("Error fetching data!")
         }
     }
+    
+//    struct PatientSearchView: View {
+//        var filteredPatients: [Patient]
+//        var body: some View {
+//            VStack {
+//                Text("Search Results")
+//                List {
+//                    ForEach(filteredPatients) { patient in
+//                        Text(patient.fullName)
+//                    }
+//                }
+//            }
+//            .frame(maxWidth: .infinity, maxHeight: .infinity)
+//        }
+//    }
 }
 
 struct PatientRow: View {

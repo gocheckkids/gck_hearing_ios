@@ -14,9 +14,9 @@ class PatientListViewModel: ObservableObject {
     }
     
     @Published var loadState = PatientListLoadingState.loading
+  
     var allPatients: [DayVisits] = []
-    @Published var searchText = ""
-    
+   
     var userTapAction: ((Patient) -> ())? = { _ in }
     var screenTapAction: ((Patient) -> ())? = { _ in }
     
@@ -24,10 +24,11 @@ class PatientListViewModel: ObservableObject {
     var addPatientAction: (() -> ())? = {}
     var doneAddingPatientAction: (() -> ())? = {}
     
-    var patientListLoader: PatientListLoader
+    var patientListLoader: PatientRepository
     
-    init(loader: PatientListLoader) {
+    init(loader: PatientRepository) {
         self.patientListLoader = loader
+        setupDebounce()
     }
     
     @MainActor
@@ -40,5 +41,32 @@ class PatientListViewModel: ObservableObject {
     // should be a network call, update in DB, then update on screen
     func addPatient(_ patient: Patient) async {
         await patientListLoader.addPatient(patient)
+    }
+    
+    // MARK: Patient Search
+    var filteredPatients: [DayVisits] = []
+    @Published var isSearching: Bool = false
+    
+    @Published var searchText = "" {
+        didSet {
+            isSearching = !searchText.isEmpty ? true : false
+        }
+    }
+    
+    @Published var debouncedSearchText = ""
+    
+    func setupDebounce() {
+        debouncedSearchText = self.searchText
+        $searchText
+            .debounce(for: .seconds(0.75), scheduler: RunLoop.main)
+            .assign(to: &$debouncedSearchText)
+    }
+    func searchPatient(keyword: String) async {
+//        loadState = .loading
+//        try? await Task.sleep(seconds: 1)
+        isSearching = true
+        print("Search using \(keyword)")
+        await filteredPatients = patientListLoader.searchPatient(keyword: keyword)
+//        loadState = .success
     }
 }
