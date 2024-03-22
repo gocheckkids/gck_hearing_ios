@@ -37,4 +37,10 @@ extension Date {
     func formattedAsDateString() -> String {
         return self.formatted(date: .numeric, time: .omitted)
     }
+    /// Returns String as MM/DD/YYYY
+    func toMMDDYYYYString() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM/dd/yyyy"
+        return dateFormatter.string(from: self)
+    }
 }
