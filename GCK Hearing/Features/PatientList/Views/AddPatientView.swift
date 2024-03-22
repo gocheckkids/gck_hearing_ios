@@ -11,65 +11,147 @@ import SwiftUI
 struct AddPatientView: View {
     @ObservedObject var vm: PatientListViewModel
     
-    // Add @State vars for Textfield here or in a new ViewModel
+    // TODO: Move to a View Model
     @State private var medicalID = ""
+    @State private var ethnicity = ""
     @State private var firstName = ""
     @State private var lastName = ""
+    
     @State private var birthdate = Date.now
+    @State private var birthdateString = ""
+    
+    @State var selection = ""
+    let locations = ["Nashville", "New York", "Texas", "Florida", "Canada"]
+    
+    @State var genderSelection: String = ""
+    let genders = ["Male", "Female"]
     
     var body: some View {
         NavigationView {
-            VStack(spacing: 20) {
-                Group {
-                    TextField("Medical ID?", text: $medicalID)
-                        .textFieldStyle(.roundedBorder)
-                        .keyboardType(.numberPad)
-                    TextField("First Name", text: $firstName)
-                        .textFieldStyle(.roundedBorder)
-                    TextField("Last Name", text: $lastName)
-                        .textFieldStyle(.roundedBorder)
-                    DatePicker(selection: $birthdate, in: ...Date.now, displayedComponents: .date) {
-                        Text("Birthdate")
-                    }
-                    .datePickerStyle(.compact)
+            ScrollView(showsIndicators: false) {
+                VStack(spacing: 30) {
+                    inputFieldsGroup
+                    Spacer()
+                    actionButtonsRow
                 }
-                
-                RoundedButton(title: "Done", color: .black) {
-                    Task {
-                        await vm.addPatient(createPatientFromTextfields())
-                        vm.doneAddingPatientAction?()
-                    }
-                }
+                .padding(.top, UIScreen.main.bounds.height / 10)
             }
             .padding(.horizontal)
-          
-            .navigationTitle("Add Patient")
+            .navigationTitle("Add a Patient")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
-                    RoundedButton(title: "Cancel", color: Color.blueTheme.accentDark) {
-                        vm.doneAddingPatientAction?()
+                    RoundedButton(title: "Menu", color: Color.blueTheme.accentDark) {
                     }
-                    
                 }
             }
         }
-        // Add preconfigured patient for now
-      
+    }
+}
+
+extension AddPatientView {
+    private var actionButtonsRow: some View {
+        HStack(spacing: 100) {
+            RoundedButton(title: "Cancel", color: Color.blueTheme.accentDark) {
+                vm.doneAddingPatientAction?()
+            }
+            
+            RoundedButton(title: "Submit", color: .blueTheme.background) {
+                Task {
+                    await vm.addPatient(createPatientFromTextfields())
+                    vm.doneAddingPatientAction?()
+                }
+            }
+        }
+    }
+}
+
+extension AddPatientView {
+    private var inputFieldsGroup: some View {
+        Group {
+            PatientInputField(label: "First Name*") {
+                TextField("First Name", text: $firstName)
+                    .padding(12)
+                    .border(.gray)
+                    .autocorrectionDisabled(true)
+            }
+            
+            PatientInputField(label: "Last Name*") {
+                TextField("Last Name", text: $lastName)
+                    .padding(12)
+                    .border(.gray)
+                    .autocorrectionDisabled(true)
+            }
+            
+            PatientInputField(label: "Date of Birth*") {
+                DateTextField(date: $birthdate, dateString: $birthdateString) {
+                    birthdateString = birthdate.toMMDDYYYYString()
+                }
+                .placeholder("MM/DD/YYYY")
+                .padding(12)
+                .border(.gray)
+            }
+            PatientInputField(label: "Medical ID") {
+                TextField("Medical ID", text: $medicalID)
+                    .padding(12)
+                    .border(.gray)
+            }
+            PatientInputField(label: "Ethnicity") {
+                TextField("Ethnicity", text: $ethnicity)
+                    .padding(12)
+                    .border(.gray)
+            }
+            PatientInputField(label: "Gender") {
+                Picker("", selection: $genderSelection) {
+                    ForEach(genders, id : \.self) {
+                        Text($0)
+                    }
+                }
+                .pickerStyle(.segmented)
+            }
+            PatientInputField(label: "Location") {
+                Picker("", selection: $selection) {
+                    ForEach(locations, id : \.self) {
+                        Text($0)
+                    }
+                }
+                .pickerStyle(.menu)
+                .frame(maxWidth: .infinity, alignment: .center)
+                .padding(8)
+                .border(Color.gray.opacity(0.5))
+                .tint(Color.black)
+            }
+        }
     }
 }
 
 extension AddPatientView {
     private func createPatientFromTextfields() -> Patient {
-        // Handle validation elsewhere
-        let patient = Patient(id: Int(medicalID) ?? 00, firstName: !firstName.isEmpty ? firstName : "Blank" , lastName: !lastName.isEmpty ? lastName : "Blank", dob: birthdate.formatted(date: .numeric, time: .omitted))
+        // TODO: Handle validation elsewhere
+        let patient = Patient(id: Int(medicalID) ?? Int.random(in: 0..<Int.max), firstName: !firstName.isEmpty ? firstName : "Blank" , lastName: !lastName.isEmpty ? lastName : "Blank", birthdate: birthdate)
         return patient
     }
 }
 
+extension AddPatientView {
+    struct PatientInputField<T>: View where T: View {
+        var label: String
+        var inputControlBuilder: () -> T
+        
+        var body: some View {
+            HStack {
+                Text(label)
+                    .font(.headline)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                inputControlBuilder()
+            }
+        }
+    }
+}
+
 struct AddPatientPreview: PreviewProvider {
-     static var previews: some View {
-         AddPatientView(vm: PatientListViewModel(loader: LocalPatientListLoader()))
+    static var previews: some View {
+        AddPatientView(vm: PatientListViewModel(loader: LocalPatientListLoader()))
             .previewLayout(.sizeThatFits)
     }
 }
