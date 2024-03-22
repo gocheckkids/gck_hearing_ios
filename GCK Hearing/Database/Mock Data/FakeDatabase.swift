@@ -87,8 +87,25 @@ class MockData {
         Patient(id: 12, firstName: "Princess", lastName: "Sparklepants", birthdate: Date.randomDate()),
         ]
     
+    lazy var mockPatientListAll = [
+        Patient(id: 01, firstName: "Jahn", lastName: "Smith", birthdate: Date.randomDate()),
+        Patient(id: 02, firstName: "Dada", lastName: "Pinky", birthdate: Date.randomDate()),
+        Patient(id: 03, firstName: "Jimmy", lastName: "Gordon", birthdate: Date.randomDate()),
+        Patient(id: 04, firstName: "Zoey", lastName: "Oneoone", birthdate: Date.randomDate()),
+        
+        Patient(id: 05, firstName: "Emma", lastName: "Johnson", birthdate: Date.randomDate()),
+        Patient(id: 06, firstName: "Michael", lastName: "Chang", birthdate: Date.randomDate()),
+        Patient(id: 07, firstName: "Sophia", lastName: "Martinez", birthdate: Date.randomDate()),
+        Patient(id: 08, firstName: "Alexander", lastName: "Lee", birthdate: Date.randomDate()),
+        
+        Patient(id: 09, firstName: "Bubbles", lastName: "McGee", birthdate: Date.randomDate()),
+        Patient(id: 10, firstName: "Sunny", lastName: "Delight", birthdate: Date.randomDate()),
+        Patient(id: 11, firstName: "Bartholomew", lastName: "Fiddlesticks", birthdate: Date.randomDate()),
+        Patient(id: 12, firstName: "Princess", lastName: "Sparklepants", birthdate: Date.randomDate()),
+    ]
+    
     lazy var mockDayVisitsList = [
-        DayVisits(visitDate: Date.now, patientList: mockPatientList1),
+        DayVisits(visitDate: Date(year: 2024, month: 3, day: 18), patientList: mockPatientList1),
         DayVisits(visitDate: Date(year: 2023, month: 12, day: 30), patientList: mockPatientList2),
         DayVisits(visitDate: Date(year: 2023, month: 12, day: 15), patientList: mockPatientList3)
     ]
