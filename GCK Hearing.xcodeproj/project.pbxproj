@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		744D47EB2BAA10D20052DA85 /* GCK_HearingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744D47EA2BAA10D20052DA85 /* GCK_HearingTests.swift */; };
+		744D47F22BAA10E60052DA85 /* PatientListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744D47F12BAA10E60052DA85 /* PatientListTests.swift */; };
+		744D48492BAA392F0052DA85 /* DayVisitModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744D48482BAA392F0052DA85 /* DayVisitModel.swift */; };
+		744D484B2BAA41500052DA85 /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744D484A2BAA41500052DA85 /* Date+.swift */; };
+		744D484D2BACAFBA0052DA85 /* DateWheelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744D484C2BACAFBA0052DA85 /* DateWheelTextField.swift */; };
 		74B17F032B97989400527AA0 /* GCK_HearingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B17F022B97989400527AA0 /* GCK_HearingApp.swift */; };
 		74B17F052B97989400527AA0 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B17F042B97989400527AA0 /* LoginView.swift */; };
 		74B17F072B97989600527AA0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 74B17F062B97989600527AA0 /* Assets.xcassets */; };
@@ -15,7 +20,7 @@
 		74B17F142B979DCD00527AA0 /* PatientViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B17F132B979DCD00527AA0 /* PatientViewModel.swift */; };
 		74B17F172B979EFC00527AA0 /* PatientModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B17F162B979EFC00527AA0 /* PatientModel.swift */; };
 		74B17F1A2B97A0DE00527AA0 /* FakeDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B17F192B97A0DE00527AA0 /* FakeDatabase.swift */; };
-		74B17F1E2B97CDEF00527AA0 /* PatientListLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B17F1D2B97CDEF00527AA0 /* PatientListLoader.swift */; };
+		74B17F1E2B97CDEF00527AA0 /* PatientRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B17F1D2B97CDEF00527AA0 /* PatientRepository.swift */; };
 		74B17F222B97E82B00527AA0 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B17F212B97E82B00527AA0 /* SearchView.swift */; };
 		74B17F252B97E87300527AA0 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B17F242B97E87300527AA0 /* Color.swift */; };
 		74B17F272B97EBD800527AA0 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B17F262B97EBD800527AA0 /* RoundedButton.swift */; };
@@ -40,7 +45,23 @@
 		74BB0A572BA2477200E43779 /* Task + Sleep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BB0A562BA2477200E43779 /* Task + Sleep.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		744D47EC2BAA10D20052DA85 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 74B17EF72B97989400527AA0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 74B17EFE2B97989400527AA0;
+			remoteInfo = "GCK Hearing";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		744D47E82BAA10D20052DA85 /* GCK HearingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "GCK HearingTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		744D47EA2BAA10D20052DA85 /* GCK_HearingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCK_HearingTests.swift; sourceTree = "<group>"; };
+		744D47F12BAA10E60052DA85 /* PatientListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientListTests.swift; sourceTree = "<group>"; };
+		744D48482BAA392F0052DA85 /* DayVisitModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayVisitModel.swift; sourceTree = "<group>"; };
+		744D484A2BAA41500052DA85 /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
+		744D484C2BACAFBA0052DA85 /* DateWheelTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateWheelTextField.swift; sourceTree = "<group>"; };
 		74B17EFF2B97989400527AA0 /* GCK Hearing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GCK Hearing.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		74B17F022B97989400527AA0 /* GCK_HearingApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCK_HearingApp.swift; sourceTree = "<group>"; };
 		74B17F042B97989400527AA0 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -50,7 +71,7 @@
 		74B17F132B979DCD00527AA0 /* PatientViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientViewModel.swift; sourceTree = "<group>"; };
 		74B17F162B979EFC00527AA0 /* PatientModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientModel.swift; sourceTree = "<group>"; };
 		74B17F192B97A0DE00527AA0 /* FakeDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeDatabase.swift; sourceTree = "<group>"; };
-		74B17F1D2B97CDEF00527AA0 /* PatientListLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientListLoader.swift; sourceTree = "<group>"; };
+		74B17F1D2B97CDEF00527AA0 /* PatientRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientRepository.swift; sourceTree = "<group>"; };
 		74B17F212B97E82B00527AA0 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		74B17F242B97E87300527AA0 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		74B17F262B97EBD800527AA0 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
@@ -76,6 +97,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		744D47E52BAA10D20052DA85 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		74B17EFC2B97989400527AA0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -86,10 +114,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		744D47E92BAA10D20052DA85 /* GCK HearingTests */ = {
+			isa = PBXGroup;
+			children = (
+				744D47EA2BAA10D20052DA85 /* GCK_HearingTests.swift */,
+				744D47F12BAA10E60052DA85 /* PatientListTests.swift */,
+			);
+			path = "GCK HearingTests";
+			sourceTree = "<group>";
+		};
 		74B17EF62B97989400527AA0 = {
 			isa = PBXGroup;
 			children = (
 				74B17F012B97989400527AA0 /* GCK Hearing */,
+				744D47E92BAA10D20052DA85 /* GCK HearingTests */,
 				74B17F002B97989400527AA0 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -98,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				74B17EFF2B97989400527AA0 /* GCK Hearing.app */,
+				744D47E82BAA10D20052DA85 /* GCK HearingTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -143,6 +182,7 @@
 			children = (
 				74BB0A4B2BA21D5000E43779 /* Result Models */,
 				74B17F162B979EFC00527AA0 /* PatientModel.swift */,
+				744D48482BAA392F0052DA85 /* DayVisitModel.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -166,7 +206,7 @@
 		74B17F1C2B97CDBC00527AA0 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
-				74B17F1D2B97CDEF00527AA0 /* PatientListLoader.swift */,
+				74B17F1D2B97CDEF00527AA0 /* PatientRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -185,6 +225,7 @@
 			children = (
 				74B17F212B97E82B00527AA0 /* SearchView.swift */,
 				74B17F262B97EBD800527AA0 /* RoundedButton.swift */,
+				744D484C2BACAFBA0052DA85 /* DateWheelTextField.swift */,
 			);
 			path = "View Components";
 			sourceTree = "<group>";
@@ -195,6 +236,7 @@
 				74B17F242B97E87300527AA0 /* Color.swift */,
 				74BB09FF2B9FAD4700E43779 /* View.swift */,
 				74BB0A562BA2477200E43779 /* Task + Sleep.swift */,
+				744D484A2BAA41500052DA85 /* Date+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -287,6 +329,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		744D47E72BAA10D20052DA85 /* GCK HearingTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 744D47F02BAA10D20052DA85 /* Build configuration list for PBXNativeTarget "GCK HearingTests" */;
+			buildPhases = (
+				744D47E42BAA10D20052DA85 /* Sources */,
+				744D47E52BAA10D20052DA85 /* Frameworks */,
+				744D47E62BAA10D20052DA85 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				744D47ED2BAA10D20052DA85 /* PBXTargetDependency */,
+			);
+			name = "GCK HearingTests";
+			productName = "GCK HearingTests";
+			productReference = 744D47E82BAA10D20052DA85 /* GCK HearingTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		74B17EFE2B97989400527AA0 /* GCK Hearing */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 74B17F0D2B97989600527AA0 /* Build configuration list for PBXNativeTarget "GCK Hearing" */;
@@ -314,6 +374,10 @@
 				LastSwiftUpdateCheck = 1500;
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
+					744D47E72BAA10D20052DA85 = {
+						CreatedOnToolsVersion = 15.0;
+						TestTargetID = 74B17EFE2B97989400527AA0;
+					};
 					74B17EFE2B97989400527AA0 = {
 						CreatedOnToolsVersion = 15.0;
 					};
@@ -333,11 +397,19 @@
 			projectRoot = "";
 			targets = (
 				74B17EFE2B97989400527AA0 /* GCK Hearing */,
+				744D47E72BAA10D20052DA85 /* GCK HearingTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		744D47E62BAA10D20052DA85 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		74B17EFD2B97989400527AA0 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -350,6 +422,15 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		744D47E42BAA10D20052DA85 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				744D47EB2BAA10D20052DA85 /* GCK_HearingTests.swift in Sources */,
+				744D47F22BAA10E60052DA85 /* PatientListTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		74B17EFB2B97989400527AA0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -358,9 +439,11 @@
 				74B17F052B97989400527AA0 /* LoginView.swift in Sources */,
 				74B17F272B97EBD800527AA0 /* RoundedButton.swift in Sources */,
 				74B17F112B979AE400527AA0 /* PatientListView.swift in Sources */,
+				744D48492BAA392F0052DA85 /* DayVisitModel.swift in Sources */,
 				74BB0A572BA2477200E43779 /* Task + Sleep.swift in Sources */,
+				744D484B2BAA41500052DA85 /* Date+.swift in Sources */,
 				74B17F322B9A37FC00527AA0 /* PatientDetailViewModel.swift in Sources */,
-				74B17F1E2B97CDEF00527AA0 /* PatientListLoader.swift in Sources */,
+				74B17F1E2B97CDEF00527AA0 /* PatientRepository.swift in Sources */,
 				74B17F412B9BCC3800527AA0 /* MultiLocationListView.swift in Sources */,
 				74B17F142B979DCD00527AA0 /* PatientViewModel.swift in Sources */,
 				74BB09FC2B9F914400E43779 /* LoginViewModel.swift in Sources */,
@@ -377,6 +460,7 @@
 				74B17F032B97989400527AA0 /* GCK_HearingApp.swift in Sources */,
 				74B17F372B9A9CC400527AA0 /* ScreeningView.swift in Sources */,
 				74B688952BA8EE2C00920BA8 /* AddPatientView.swift in Sources */,
+				744D484D2BACAFBA0052DA85 /* DateWheelTextField.swift in Sources */,
 				74B17F2C2B98D4A200527AA0 /* ScreeningCoordinator.swift in Sources */,
 				74BB0A4D2BA21D6100E43779 /* ResultModels.swift in Sources */,
 				74B17F172B979EFC00527AA0 /* PatientModel.swift in Sources */,
@@ -388,7 +472,53 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		744D47ED2BAA10D20052DA85 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 74B17EFE2B97989400527AA0 /* GCK Hearing */;
+			targetProxy = 744D47EC2BAA10D20052DA85 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		744D47EE2BAA10D20052DA85 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3RYP47MLV8;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.learning.GCK-HearingTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GCK Hearing.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/GCK Hearing";
+			};
+			name = Debug;
+		};
+		744D47EF2BAA10D20052DA85 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3RYP47MLV8;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.learning.GCK-HearingTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GCK Hearing.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/GCK Hearing";
+			};
+			name = Release;
+		};
 		74B17F0B2B97989600527AA0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -571,6 +701,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		744D47F02BAA10D20052DA85 /* Build configuration list for PBXNativeTarget "GCK HearingTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				744D47EE2BAA10D20052DA85 /* Debug */,
+				744D47EF2BAA10D20052DA85 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		74B17EFA2B97989400527AA0 /* Build configuration list for PBXProject "GCK Hearing" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
