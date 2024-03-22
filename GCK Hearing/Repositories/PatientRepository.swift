@@ -61,9 +61,9 @@ class LocalPatientListLoader: PatientRepository {
         
         // Is the latest list on today's date? If so add to top, if not, create new dayvisit.
         
-        // 'Add to Top' = add in first visit's first patient list, to mimic latest patient add
+        // Add to the end of today's list
         if (latestDate.isCurrentDay()) {
-            MockData.shared.mockDayVisitsList[0].patientList.insert(patient, at: 0)
+            MockData.shared.mockDayVisitsList[0].patientList.append(patient)
         }
         else {
             // Add DayVisit to start of visits array
