@@ -26,12 +26,16 @@ struct AddPatientView: View {
     @State var selection = ""
     let locations = ["Nashville", "New York", "Texas", "Florida", "Canada"]
     
-    @State var genderSelection: String = ""
+    @State var genderSelection: String?
     let genders = ["Male", "Female"]
+    
+    @State var ethnicitySelection: String?
+    
+    let ethnicities = ["African American", "Asian", "Caucasian","Hispanic","Native American", "Pacific Islander"]
     
     var body: some View {
         NavigationView {
-            ScrollView(showsIndicators: false) {
+            ScrollView([], showsIndicators: false) {
                 VStack(spacing: 30) {
                     inputFieldsGroup
                     Spacer()
@@ -59,13 +63,13 @@ extension AddPatientView {
 //                vm.doneAddingPatientAction?()
                 cancelAction()
             }
-            
             RoundedButton(title: "Submit", color: .blueTheme.background) {
                 Task {
 //                    await vm.addPatient(createPatientFromTextfields())
 //                    vm.doneAddingPatientAction?()
                     await submitAction(createPatientFromTextfields())
                 }
+                
             }
         }
     }
@@ -78,6 +82,7 @@ extension AddPatientView {
                 TextField("First Name", text: $firstName)
                     .padding(12)
                     .border(.gray)
+                    .keyboardType(.alphabet)
                     .autocorrectionDisabled(true)
             }
             
@@ -85,6 +90,7 @@ extension AddPatientView {
                 TextField("Last Name", text: $lastName)
                     .padding(12)
                     .border(.gray)
+                    .keyboardType(.alphabet)
                     .autocorrectionDisabled(true)
             }
             
@@ -100,17 +106,29 @@ extension AddPatientView {
                 TextField("Medical ID", text: $medicalID)
                     .padding(12)
                     .border(.gray)
+                    .keyboardType(.numberPad)
             }
             PatientInputField(label: "Ethnicity") {
-                TextField("Ethnicity", text: $ethnicity)
-                    .padding(12)
-                    .border(.gray)
+                Picker("", selection: $selection) {
+                    Text("Unspecified")
+                        .tag(String?(nil))
+                    ForEach(ethnicities, id : \.self) {
+                        Text($0).tag(Optional($0))
+                    }
+                }
+                .pickerStyle(.menu)
+                .frame(maxWidth: .infinity, alignment: .center)
+                .padding(8)
+                .border(Color.gray.opacity(0.5))
+                .tint(Color.black)
             }
             PatientInputField(label: "Gender") {
                 Picker("", selection: $genderSelection) {
                     ForEach(genders, id : \.self) {
-                        Text($0)
+                        Text($0).tag(Optional($0))
                     }
+                    Text("N/A")
+                        .tag(String?(nil))
                 }
                 .pickerStyle(.segmented)
             }
@@ -156,7 +174,7 @@ extension AddPatientView {
 
 struct AddPatientPreview: PreviewProvider {
     static var previews: some View {
-        AddPatientView(vm: PatientListViewModel(loader: LocalPatientListLoader()))
+        AddPatientView(cancelAction: {}, submitAction: {_ in })
             .previewLayout(.sizeThatFits)
     }
 }
