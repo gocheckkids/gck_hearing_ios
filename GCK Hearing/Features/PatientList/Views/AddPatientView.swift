@@ -9,7 +9,10 @@ import Foundation
 import SwiftUI
 
 struct AddPatientView: View {
-    @ObservedObject var vm: PatientListViewModel
+//    @ObservedObject var vm: PatientListViewModel
+    
+    var cancelAction: (() -> ())
+    var submitAction: ((Patient) async -> ())
     
     // TODO: Move to a View Model
     @State private var medicalID = ""
@@ -53,13 +56,15 @@ extension AddPatientView {
     private var actionButtonsRow: some View {
         HStack(spacing: 100) {
             RoundedButton(title: "Cancel", color: Color.blueTheme.accentDark) {
-                vm.doneAddingPatientAction?()
+//                vm.doneAddingPatientAction?()
+                cancelAction()
             }
             
             RoundedButton(title: "Submit", color: .blueTheme.background) {
                 Task {
-                    await vm.addPatient(createPatientFromTextfields())
-                    vm.doneAddingPatientAction?()
+//                    await vm.addPatient(createPatientFromTextfields())
+//                    vm.doneAddingPatientAction?()
+                    await submitAction(createPatientFromTextfields())
                 }
             }
         }
