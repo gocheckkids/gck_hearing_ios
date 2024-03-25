@@ -65,7 +65,8 @@ class FirstTabCoodinator: NSObject, Coordinator {
         }
         // Add Patient -> Back (List)
         patientListVM?.doneAddingPatientAction = { [weak self] in
-            self?.rootViewController.popViewController(animated: true)
+//            self?.rootViewController.popViewController(animated: true)
+            self?.rootViewController.dismiss(animated: true)
         }
         
         patientListVM?.screenTapAction = { [weak self] patient in
@@ -174,8 +175,11 @@ class FirstTabCoodinator: NSObject, Coordinator {
     // MARK: Menu Actions
     func goToAddPatient() {
         let backupVM = PatientListViewModel(loader: LocalPatientListLoader())
-        let addPatientVC = UIHostingController(rootView: AddPatientView(vm: self.patientListVM ?? backupVM))
-        rootViewController.pushViewController(addPatientVC, animated: true)
+        let addPatientView = AddPatientView(cancelAction: self.patientListVM!.doneAddingPatientAction ?? {}, submitAction: self.patientListVM!.addPatient)
+        let addPatientVC = UIHostingController(rootView: addPatientView)
+        addPatientVC.modalPresentationStyle = .fullScreen
+        rootViewController.present(addPatientVC, animated: true)
+//        rootViewController.pushViewController(addPatientVC, animated: true)
     }
     
     func popToRoot() {
