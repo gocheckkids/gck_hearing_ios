@@ -33,27 +33,9 @@ struct ScreeningView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
-//                    Menu(content) {
-//                        Button("Resume", action: {})
-//                        Button("Exit") {
-//                            screeningVm.menuExitAction?()
-//                        } label: {
-//                            Text("Pause")
-//                        }
-//                    }
-                    Menu(content: {
-                        Button("Resume", role: .cancel, action: {})
-                        Button("Exit", role: .destructive) {
-                            screeningVm.menuExitAction?()
-                        }
-                    }, label: {
-                        Text("Pause")
-                            .foregroundColor(.white)
-                            .padding(8)
-                            .background(Color.blueTheme.accentDark)
-                            .cornerRadius(5)
-                    })
-                    
+                    RoundedButton(title: "Pause", color: Color.blueTheme.accentDark) {
+                        screeningVm.menuExitAction?()
+                    }
                 }
             }
         }
@@ -150,8 +132,10 @@ extension ScreeningView {
 }
 
 struct ScreeningView_Preview: PreviewProvider {
+    static var vm = ScreeningViewModel(patient: MockData.shared.mockPatient)
+    
     static var previews: some View {
-        let screenView = ScreeningView(screeningVm: ScreeningViewModel(patient: MockData.shared.mockPatient))
+        let screenView = ScreeningView(screeningVm: vm)
         Group {
             screenView
             screenView.instructionView

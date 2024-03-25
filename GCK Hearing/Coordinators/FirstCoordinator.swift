@@ -83,11 +83,22 @@ class FirstTabCoodinator: NSObject, Coordinator {
             self?.goToResults(for: patient, with: results)
         }
         
-        // Screening -> Go back (exit)
-        screeningVM?.menuExitAction = { [weak self] in 
-            self?.rootViewController.popViewController(animated: true)
+        // Pause Menu
+        screeningVM?.menuExitAction = { [weak self] in
+//            let popAction = self?.rootViewController.popViewController(animated: true)
+            
+            let vc = UIHostingController(rootView: PauseMenu(exit: {
+                self?.rootViewController.dismiss(animated: false)
+                self?.rootViewController.popViewController(animated: true)
+            }, resume: {
+                self?.rootViewController.dismiss(animated: true)
+            }))
+            vc.modalPresentationStyle = .pageSheet
+            vc.sheetPresentationController?.detents = [.medium()]
+            vc.isModalInPresentation = true
+            self?.rootViewController.present(vc, animated: true)
         }
-        
+
     }
     
     func setupDetailNavigation() {
