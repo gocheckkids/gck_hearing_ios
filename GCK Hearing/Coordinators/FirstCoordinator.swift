@@ -87,9 +87,10 @@ class FirstTabCoodinator: NSObject, Coordinator {
         screeningVM?.pauseTappedAction = { [weak self] in
 //            let popAction = self?.rootViewController.popViewController(animated: true)
             
-            let vc = UIHostingController(rootView: PauseMenu(exit: {
+            let vc = UIHostingController(rootView: PauseMenu(
+                exit: {
                 self?.rootViewController.dismiss(animated: false)
-                self?.rootViewController.popViewController(animated: true)
+                self?.popToRoot(animated: true)
             }, resume: {
                 self?.rootViewController.dismiss(animated: true)
             }))
@@ -193,8 +194,8 @@ class FirstTabCoodinator: NSObject, Coordinator {
 //        rootViewController.pushViewController(addPatientVC, animated: true)
     }
     
-    func popToRoot() {
-        rootViewController.popToRootViewController(animated: false)
+    func popToRoot(animated: Bool = false) {
+        rootViewController.popToRootViewController(animated: animated)
     }
     
 }
