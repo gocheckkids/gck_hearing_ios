@@ -84,7 +84,7 @@ class FirstTabCoodinator: NSObject, Coordinator {
         }
         
         // Pause Menu
-        screeningVM?.menuExitAction = { [weak self] in
+        screeningVM?.pauseTappedAction = { [weak self] in
 //            let popAction = self?.rootViewController.popViewController(animated: true)
             
             let vc = UIHostingController(rootView: PauseMenu(exit: {

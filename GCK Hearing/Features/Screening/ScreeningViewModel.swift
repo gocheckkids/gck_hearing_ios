@@ -25,7 +25,7 @@ class ScreeningViewModel: ObservableObject {
     
     var screeningCompleteAction: ((Patient, ResultDetails) -> ())? = {_,_ in}
     
-    var menuExitAction: (() ->())? = {}
+    var pauseTappedAction: (() ->())? = {}
     
     var currentStep: Int = 1
     var frequencies = [1000, 2000]
