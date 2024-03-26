@@ -12,6 +12,8 @@
 		744D48492BAA392F0052DA85 /* DayVisitModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744D48482BAA392F0052DA85 /* DayVisitModel.swift */; };
 		744D484B2BAA41500052DA85 /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744D484A2BAA41500052DA85 /* Date+.swift */; };
 		744D484D2BACAFBA0052DA85 /* DateWheelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744D484C2BACAFBA0052DA85 /* DateWheelTextField.swift */; };
+		744D484F2BB0B1240052DA85 /* PauseMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744D484E2BB0B1240052DA85 /* PauseMenu.swift */; };
+		744D48522BB322FB0052DA85 /* Button+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744D48512BB322FB0052DA85 /* Button+Style.swift */; };
 		74B17F032B97989400527AA0 /* GCK_HearingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B17F022B97989400527AA0 /* GCK_HearingApp.swift */; };
 		74B17F052B97989400527AA0 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B17F042B97989400527AA0 /* LoginView.swift */; };
 		74B17F072B97989600527AA0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 74B17F062B97989600527AA0 /* Assets.xcassets */; };
@@ -62,6 +64,8 @@
 		744D48482BAA392F0052DA85 /* DayVisitModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayVisitModel.swift; sourceTree = "<group>"; };
 		744D484A2BAA41500052DA85 /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
 		744D484C2BACAFBA0052DA85 /* DateWheelTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateWheelTextField.swift; sourceTree = "<group>"; };
+		744D484E2BB0B1240052DA85 /* PauseMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseMenu.swift; sourceTree = "<group>"; };
+		744D48512BB322FB0052DA85 /* Button+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Button+Style.swift"; sourceTree = "<group>"; };
 		74B17EFF2B97989400527AA0 /* GCK Hearing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GCK Hearing.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		74B17F022B97989400527AA0 /* GCK_HearingApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCK_HearingApp.swift; sourceTree = "<group>"; };
 		74B17F042B97989400527AA0 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -121,6 +125,14 @@
 				744D47F12BAA10E60052DA85 /* PatientListTests.swift */,
 			);
 			path = "GCK HearingTests";
+			sourceTree = "<group>";
+		};
+		744D48502BB322770052DA85 /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+				744D48512BB322FB0052DA85 /* Button+Style.swift */,
+			);
+			path = Styles;
 			sourceTree = "<group>";
 		};
 		74B17EF62B97989400527AA0 = {
@@ -223,9 +235,11 @@
 		74B17F202B97E81C00527AA0 /* View Components */ = {
 			isa = PBXGroup;
 			children = (
+				744D48502BB322770052DA85 /* Styles */,
 				74B17F212B97E82B00527AA0 /* SearchView.swift */,
 				74B17F262B97EBD800527AA0 /* RoundedButton.swift */,
 				744D484C2BACAFBA0052DA85 /* DateWheelTextField.swift */,
+				744D484E2BB0B1240052DA85 /* PauseMenu.swift */,
 			);
 			path = "View Components";
 			sourceTree = "<group>";
@@ -442,6 +456,7 @@
 				744D48492BAA392F0052DA85 /* DayVisitModel.swift in Sources */,
 				74BB0A572BA2477200E43779 /* Task + Sleep.swift in Sources */,
 				744D484B2BAA41500052DA85 /* Date+.swift in Sources */,
+				744D48522BB322FB0052DA85 /* Button+Style.swift in Sources */,
 				74B17F322B9A37FC00527AA0 /* PatientDetailViewModel.swift in Sources */,
 				74B17F1E2B97CDEF00527AA0 /* PatientRepository.swift in Sources */,
 				74B17F412B9BCC3800527AA0 /* MultiLocationListView.swift in Sources */,
@@ -449,6 +464,7 @@
 				74BB09FC2B9F914400E43779 /* LoginViewModel.swift in Sources */,
 				74B17F302B9A217600527AA0 /* PatientDetailView.swift in Sources */,
 				74B17F352B9A93AF00527AA0 /* ScreeningViewModel.swift in Sources */,
+				744D484F2BB0B1240052DA85 /* PauseMenu.swift in Sources */,
 				74BB0A532BA21FF200E43779 /* FirstCoordinator.swift in Sources */,
 				74B17F3F2B9BCA0D00527AA0 /* MultiLocationViewModel.swift in Sources */,
 				74B17F3A2B9B75DE00527AA0 /* ResultDetailsViewModel.swift in Sources */,
