@@ -14,20 +14,20 @@ struct PauseMenu: View {
     var body: some View {
         VStack(spacing: 25) {
             Button("Retest", action: retest ?? {})
-                .background(Color.deepBlueTheme.background)
-                .buttonStyle(PauseMenuOptionStyle())
-                .foregroundColor(.white)
-                .cornerRadius(6)
+                .buttonStyle(MainActionButtonStyle(
+                    backgroundColor: Color.deepBlueTheme.background,
+                    foregroundColor: Color.white
+                ))
             Button("Back to test", action: resume ?? {})
-                .background(Color.deepBlueTheme.accent.opacity(0.5))
-                .buttonStyle(PauseMenuOptionStyle())
-                .foregroundColor(.black)
-                .cornerRadius(6)
+                .buttonStyle(MainActionButtonStyle(
+                    backgroundColor: Color.deepBlueTheme.accent.opacity(0.5),
+                    foregroundColor: Color.black
+                ))
             Button("Back to home", action: exit ?? {})
-                .background(Color.deepBlueTheme.accent.opacity(0.5))
-                .buttonStyle(PauseMenuOptionStyle())
-                .foregroundColor(.black)
-                .cornerRadius(6)
+                .buttonStyle(MainActionButtonStyle(
+                    backgroundColor: Color.deepBlueTheme.accent.opacity(0.5),
+                    foregroundColor: Color.black
+                ))
         }
         .frame(maxHeight: .infinity, alignment: .bottom)
         .offset(CGSize(width: 0.0, height: -50.0))
