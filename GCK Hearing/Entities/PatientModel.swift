@@ -28,7 +28,7 @@ struct Patient:Identifiable {
     }
     
     var dob: String {
-        return birthdate.formatted(date: .numeric, time: .omitted)
+        return birthdate.formattedAsDateString()
     }
     
     init(id: Int, firstName: String, lastName: String, birthdate: Date) {
@@ -37,6 +37,5 @@ struct Patient:Identifiable {
         self.lastName = lastName
         self.birthdate = birthdate
     }
-    
-    
+
 }
