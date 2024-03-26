@@ -7,6 +7,7 @@
 
 import Foundation
 
+// MARK: Location List
 
 protocol LocationListLoader {
     func getLocations() async -> [String]
@@ -19,50 +20,39 @@ class LocalLocationListLoader: LocationListLoader {
     }
 }
 
+// MARK: Patient List
+
 protocol PatientRepository {
     func getPatients() async -> [DayVisits]
     func addPatient(_ patient: Patient) async -> ()
     func searchPatient(keyword: String) async -> [DayVisits]
 }
 
-protocol ScreeningRepository {
-    func loadProtocols() async -> [String]
-}
-
-
 // Local Implementation
 class LocalPatientListLoader: PatientRepository {
     func searchPatient(keyword: String) async -> [DayVisits] {
-        
         var returnVisits: [DayVisits] = []
         let key = keyword.lowercased()
-        
+
         MockData.shared.mockDayVisitsList.forEach { visit in
             var patientsList = [Patient]()
-            
             patientsList = visit.patientList.filter { patient in
                 patient.firstName.lowercased().contains(key) ||
                 patient.lastName.lowercased().contains(key) ||
                 String(patient.id).contains(key)
             }
-            
             // Found at least 1 match
             if !patientsList.isEmpty {
                 returnVisits.append(DayVisits(visitDate: visit.visitDate, patientList: patientsList))
                 // empty list for next check
 //                patientsList = []
             }
-            
         }
-        
         return returnVisits
     }
     
-    // [ 1/2/2024: ["John Smith", "Alex Ju"], 1/1/2024: ["Jacy Rea", "Dame Little"]  ]
-    
     func addPatient(_ patient: Patient) async {
         let latestDate = MockData.shared.mockDayVisitsList[0].visitDate
-        
         // Is the latest list on today's date? If so add to top, if not, create new dayvisit.
         
         // Add to the end of today's list
@@ -81,7 +71,6 @@ class LocalPatientListLoader: PatientRepository {
     }
 }
 
-// API Implementation
 class RemotePatientListLoadeer: PatientRepository {
     func searchPatient(keyword: String) async -> [DayVisits] {
         return []
@@ -90,13 +79,14 @@ class RemotePatientListLoadeer: PatientRepository {
     func addPatient(_ patient: Patient) async {
         // Add patient through API
     }
-    
-    
+
     func getPatients() async -> [DayVisits] {
         // Load patients using API
         return []
     }
 }
+
+// MARK: Patient Recent Visits
 
 protocol PatientVisitLoader {
     func getPatientRecentVisitsSummary(id: Int) async -> [ResultsModel]
@@ -108,6 +98,12 @@ class LocalPatientVisitsLoader: PatientVisitLoader {
         try? await Task.sleep(seconds: 2)
         return MockData.shared.mockPatientVisits
     }
+}
+
+// MARK: Screening
+
+protocol ScreeningRepository {
+    func loadProtocols() async -> [String]
 }
 
 class LocalScreeningRepository: ScreeningRepository {
