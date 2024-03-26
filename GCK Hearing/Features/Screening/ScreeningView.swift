@@ -16,8 +16,34 @@ struct ScreeningView: View {
             VStack() {
                 Text("Patient: \(screeningVm.patient.fullName)")
                     .font(.title2)
-                //                Text("Ear: \(screeningVm.currentEar == .left ? "Left" : "Right")")
-                //                Text("Frequency: \(screeningVm.frequencies[screeningVm.currentStep])")
+                    
+                    .padding(20)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    
+                HStack {
+                    Text("Protocol: ")
+                        .font(.title3)
+
+                    Picker("Protocols", selection: $screeningVm.selectedScreeningProtocol) {
+                        ForEach(screeningVm.screeningProtocols, id : \.self) {
+                            Text($0)
+                        }
+                    }
+                        .pickerStyle(.menu)
+                        .frame(maxWidth: .infinity)
+                        .padding(8)
+                        .border(Color.gray.opacity(0.5))
+                        .tint(Color.black)
+                        .onTapGesture {
+                            Task {
+                                print("LOADING")
+                                await screeningVm.loadProtocols()
+                            }
+                        }
+                        .disabled((screeningVm.currentStep == 1 && screeningVm.screeningState == .instruction) ? false : true)
+                }
+                .padding(.horizontal, 20)
+                .frame(maxWidth: .infinity, alignment: .leading)
                 
                 switch screeningVm.screeningState {
                 case .instruction:

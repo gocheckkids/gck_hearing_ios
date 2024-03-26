@@ -168,7 +168,10 @@ class FirstTabCoodinator: NSObject, Coordinator {
     }
 
     func goToScreening(for patient: Patient) {
+        let screeningRepository: ScreeningRepository = LocalScreeningRepository()
         let vm = ScreeningViewModel(patient: patient)
+
+        vm.screeningProtocolsLoader = screeningRepository.loadProtocols
         self.screeningVM = vm
         setupScreeningNavigation()
         let screeningViewController = UIHostingController(rootView: ScreeningView(screeningVm: self.screeningVM ?? vm))

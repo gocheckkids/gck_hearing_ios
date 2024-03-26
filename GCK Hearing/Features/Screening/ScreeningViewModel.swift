@@ -23,6 +23,9 @@ class ScreeningViewModel: ObservableObject {
     @Published var screeningState: ScreeningStates = .instruction
     @Published var isPlayingSoundNow: Bool = false
     
+    @Published var selectedScreeningProtocol: String = ""
+    @Published var screeningProtocols: [String] = [""]
+    
     var screeningCompleteAction: ((Patient, ResultDetails) -> ())? = {_,_ in}
     
     var pauseTappedAction: (() ->())? = {}
@@ -32,7 +35,12 @@ class ScreeningViewModel: ObservableObject {
     let stepCount: Int
     var currentEar: TestEar = .left
     var currentFrequencyIndex = 0
-    var instructionText = "When ready, press PLAY to send the tone"
+    
+    var instructionText = """
+    1. Ensure a protocol is selected.
+    
+    2. When ready, press PLAY to send the tone
+    """
     
     let patient: Patient
     

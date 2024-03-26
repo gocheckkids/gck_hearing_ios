@@ -25,6 +25,10 @@ protocol PatientRepository {
     func searchPatient(keyword: String) async -> [DayVisits]
 }
 
+protocol ScreeningRepository {
+    func loadProtocols() async -> [String]
+}
+
 
 // Local Implementation
 class LocalPatientListLoader: PatientRepository {
@@ -103,6 +107,13 @@ class LocalPatientVisitsLoader: PatientVisitLoader {
     func getPatientRecentVisitsSummary(id: Int) async -> [ResultsModel] {
         try? await Task.sleep(seconds: 2)
         return MockData.shared.mockPatientVisits
+    }
+}
+
+class LocalScreeningRepository: ScreeningRepository {
+    func loadProtocols() async -> [String] {
+        try? await Task.sleep(seconds: 2)
+        return MockData.shared.mockScreeningProtocolsList
     }
 }
 

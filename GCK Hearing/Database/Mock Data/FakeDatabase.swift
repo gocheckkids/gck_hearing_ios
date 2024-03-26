@@ -110,6 +110,13 @@ class MockData {
         DayVisits(visitDate: Date(year: 2023, month: 12, day: 15), patientList: mockPatientList3)
     ]
     
+    lazy var mockScreeningProtocolsList = [
+        "Sales Demo Protocol",
+        "Test Clinic Protocol",
+        "Superexam Protocol",
+        "Awfulexam Protocol",
+    ]
+    
     var mockPatientVisits = [
         ResultsModel(date: "01/10/24", referralResult: true),
         ResultsModel(date: "12/03/23", referralResult: false),
