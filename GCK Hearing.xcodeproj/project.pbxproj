@@ -14,6 +14,8 @@
 		744D484D2BACAFBA0052DA85 /* DateWheelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744D484C2BACAFBA0052DA85 /* DateWheelTextField.swift */; };
 		744D484F2BB0B1240052DA85 /* PauseMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744D484E2BB0B1240052DA85 /* PauseMenu.swift */; };
 		744D48522BB322FB0052DA85 /* Button+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744D48512BB322FB0052DA85 /* Button+Style.swift */; };
+		744D48552BB348220052DA85 /* DevicePairingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744D48542BB348220052DA85 /* DevicePairingView.swift */; };
+		744D48572BB350B00052DA85 /* QRScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744D48562BB350B00052DA85 /* QRScannerViewController.swift */; };
 		74B17F032B97989400527AA0 /* GCK_HearingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B17F022B97989400527AA0 /* GCK_HearingApp.swift */; };
 		74B17F052B97989400527AA0 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B17F042B97989400527AA0 /* LoginView.swift */; };
 		74B17F072B97989600527AA0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 74B17F062B97989600527AA0 /* Assets.xcassets */; };
@@ -66,6 +68,10 @@
 		744D484C2BACAFBA0052DA85 /* DateWheelTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateWheelTextField.swift; sourceTree = "<group>"; };
 		744D484E2BB0B1240052DA85 /* PauseMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseMenu.swift; sourceTree = "<group>"; };
 		744D48512BB322FB0052DA85 /* Button+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Button+Style.swift"; sourceTree = "<group>"; };
+		744D48542BB348220052DA85 /* DevicePairingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicePairingView.swift; sourceTree = "<group>"; };
+		744D48562BB350B00052DA85 /* QRScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScannerViewController.swift; sourceTree = "<group>"; };
+		744D48582BB361110052DA85 /* GCK-HearingTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GCK-HearingTests-Info.plist"; sourceTree = SOURCE_ROOT; };
+		744D48592BB361270052DA85 /* GCK-Hearing-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GCK-Hearing-Info.plist"; sourceTree = SOURCE_ROOT; };
 		74B17EFF2B97989400527AA0 /* GCK Hearing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GCK Hearing.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		74B17F022B97989400527AA0 /* GCK_HearingApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCK_HearingApp.swift; sourceTree = "<group>"; };
 		74B17F042B97989400527AA0 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -121,6 +127,7 @@
 		744D47E92BAA10D20052DA85 /* GCK HearingTests */ = {
 			isa = PBXGroup;
 			children = (
+				744D48582BB361110052DA85 /* GCK-HearingTests-Info.plist */,
 				744D47EA2BAA10D20052DA85 /* GCK_HearingTests.swift */,
 				744D47F12BAA10E60052DA85 /* PatientListTests.swift */,
 			);
@@ -133,6 +140,15 @@
 				744D48512BB322FB0052DA85 /* Button+Style.swift */,
 			);
 			path = Styles;
+			sourceTree = "<group>";
+		};
+		744D48532BB347FC0052DA85 /* Pair Device */ = {
+			isa = PBXGroup;
+			children = (
+				744D48542BB348220052DA85 /* DevicePairingView.swift */,
+				744D48562BB350B00052DA85 /* QRScannerViewController.swift */,
+			);
+			path = "Pair Device";
 			sourceTree = "<group>";
 		};
 		74B17EF62B97989400527AA0 = {
@@ -156,6 +172,7 @@
 		74B17F012B97989400527AA0 /* GCK Hearing */ = {
 			isa = PBXGroup;
 			children = (
+				744D48592BB361270052DA85 /* GCK-Hearing-Info.plist */,
 				74B17F2A2B98D48E00527AA0 /* Coordinators */,
 				74B17F232B97E86900527AA0 /* Extensions */,
 				74B17F202B97E81C00527AA0 /* View Components */,
@@ -308,6 +325,7 @@
 		74B17F332B9A938C00527AA0 /* Screening */ = {
 			isa = PBXGroup;
 			children = (
+				744D48532BB347FC0052DA85 /* Pair Device */,
 				74B17F342B9A93AF00527AA0 /* ScreeningViewModel.swift */,
 				74B17F362B9A9CC400527AA0 /* ScreeningView.swift */,
 			);
@@ -471,6 +489,7 @@
 				74BB0A552BA220DC00E43779 /* ApplicationCoordinator.swift in Sources */,
 				74BB0A512BA21E7500E43779 /* AppDelegate.swift in Sources */,
 				74BB09FE2B9FA74300E43779 /* RootCoordinator.swift in Sources */,
+				744D48552BB348220052DA85 /* DevicePairingView.swift in Sources */,
 				74B17F222B97E82B00527AA0 /* SearchView.swift in Sources */,
 				74B17F1A2B97A0DE00527AA0 /* FakeDatabase.swift in Sources */,
 				74B17F032B97989400527AA0 /* GCK_HearingApp.swift in Sources */,
@@ -480,6 +499,7 @@
 				74B17F2C2B98D4A200527AA0 /* ScreeningCoordinator.swift in Sources */,
 				74BB0A4D2BA21D6100E43779 /* ResultModels.swift in Sources */,
 				74B17F172B979EFC00527AA0 /* PatientModel.swift in Sources */,
+				744D48572BB350B00052DA85 /* QRScannerViewController.swift in Sources */,
 				74BB0A002B9FAD4700E43779 /* View.swift in Sources */,
 				74B17F252B97E87300527AA0 /* Color.swift in Sources */,
 				74BB0A4F2BA21E4200E43779 /* SceneDelegate.swift in Sources */,
@@ -505,6 +525,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3RYP47MLV8;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "GCK-HearingTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.learning.GCK-HearingTests";
@@ -524,6 +545,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3RYP47MLV8;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "GCK-HearingTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.learning.GCK-HearingTests";
@@ -665,6 +687,8 @@
 				DEVELOPMENT_TEAM = 3RYP47MLV8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "GCK-Hearing-Info.plist";
+				INFOPLIST_KEY_NSCameraUsageDescription = "This app requires access to your Camera to scan QR codes";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -695,6 +719,8 @@
 				DEVELOPMENT_TEAM = 3RYP47MLV8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "GCK-Hearing-Info.plist";
+				INFOPLIST_KEY_NSCameraUsageDescription = "This app requires access to your Camera to scan QR codes";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

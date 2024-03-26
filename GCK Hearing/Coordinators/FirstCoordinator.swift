@@ -70,11 +70,34 @@ class FirstTabCoodinator: NSObject, Coordinator {
         }
         
         patientListVM?.screenTapAction = { [weak self] patient in
-            self?.goToScreening(for: patient)
+            self?.startScreeningFlow(for: patient)
         }
         
-        // Screening -> Result
+        // Result Overview -> Result Details
         
+    }
+    
+    private func startScreeningFlow(for patient: Patient) {
+        
+        let scannerVC = ScannerViewController()
+        scannerVC.foundQRCodeAction = { [weak self] code in
+            if (findHeadsetIsCallibrated(code)) {
+                self?.goToScreening(for: patient)
+            }
+            else {
+                let alert = UIAlertController(title: "Not Calibrated", message: "This headset is not calibrated for use . Please calibrate it, and pair it again.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Okay", style: .default))
+                self?.rootViewController.present(alert, animated: true)
+            }
+        }
+        let pairingVC = UIHostingController(rootView: DevicePairingView(
+            pairTappedAction: { [weak self] in
+                self?.rootViewController.present(scannerVC, animated: true)
+            },
+            backAction: { [weak self] in
+                self?.rootViewController.popViewController(animated: true)
+            }))
+        rootViewController.pushViewController(pairingVC, animated: true)
     }
     
     func setupScreeningNavigation() {
@@ -109,7 +132,7 @@ class FirstTabCoodinator: NSObject, Coordinator {
         }
         // Detail -> Visits OR Screening
         detailVM?.tapScreeningAction = { [weak self] patient in
-            self?.goToScreening(for: patient)
+            self?.startScreeningFlow(for: patient)
         }
         detailVM?.tapResultAction = { [weak self] in
             print("Go to results")
@@ -165,6 +188,15 @@ class FirstTabCoodinator: NSObject, Coordinator {
         detailViewController.title = "Patient Profile"
         detailViewController.navigationItem.largeTitleDisplayMode = .never
         rootViewController.pushViewController(detailViewController, animated: true)
+    }
+    
+    func goToQRScanner() {
+        let vc = ScannerViewController()
+        vc.foundQRCodeAction = { [weak self] code in
+            if (findHeadsetIsCallibrated(code)) {
+                
+            }
+        }
     }
 
     func goToScreening(for patient: Patient) {

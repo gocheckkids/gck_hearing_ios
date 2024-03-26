@@ -98,7 +98,7 @@ class LocalPatientVisitsLoader: PatientVisitLoader {
         try? await Task.sleep(seconds: 2)
         return MockData.shared.mockPatientVisits
     }
-}
+} 
 
 // MARK: Screening
 
@@ -111,6 +111,15 @@ class LocalScreeningRepository: ScreeningRepository {
         try? await Task.sleep(seconds: 2)
         return MockData.shared.mockScreeningProtocolsList
     }
+}
+
+//MARK: QR Scanning (Local Implementation)
+func findHeadsetIsCallibrated(_ code: String) -> Bool {
+    // In actual call, API returns either callibrated or not
+    // Local solution is using custom-made QR codes, which return 1 or 0
+    
+    // If code is 1, it's true. Otherwise, it's false
+    return Int(code) == 1 ? true : false
 }
 
 
