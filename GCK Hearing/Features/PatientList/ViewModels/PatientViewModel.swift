@@ -38,9 +38,15 @@ class PatientListViewModel: ObservableObject {
             loadState = .success
     }
     
+    // MARK: Patient Add
+    
     // should be a network call, update in DB, then update on screen
     func addPatient(_ patient: Patient) async {
         await patientListLoader.addPatient(patient)
+        
+        await MainActor.run {
+            doneAddingPatientAction?() 
+        }
     }
     
     // MARK: Patient Search

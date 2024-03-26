@@ -9,10 +9,12 @@ import Foundation
 
 class PatientDetailViewModel: ObservableObject {
     
+    @MainActor
     enum PatientVisitsLoadingState {
         case loading, success, failed
     }
 
+    
     @Published var patient: Patient
     @Published var loadState = PatientVisitsLoadingState.loading
     
@@ -32,8 +34,18 @@ class PatientDetailViewModel: ObservableObject {
     }
     
     func getLatestScreenings() async {
-        loadState = .loading
-        await recentResults = patientVisitLoader.getPatientRecentVisitsSummary(id: patient.id)
-        loadState = .success
+        await updateLoadState(to: .loading)
+         
+        let fetchedResults = await patientVisitLoader.getPatientRecentVisitsSummary(id: patient.id)
+        
+        await MainActor.run { [weak self] in
+            self?.recentResults = fetchedResults
+            self?.loadState = .success
+        }
+    }
+    
+    @MainActor
+    private func updateLoadState(to state: PatientVisitsLoadingState) {
+        loadState = state
     }
 }
