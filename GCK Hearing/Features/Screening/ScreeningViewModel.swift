@@ -27,12 +27,12 @@ class ScreeningViewModel: ObservableObject {
     @Published var screeningProtocols: [String] = [""]
     
     var screeningCompleteAction: ((Patient, ResultDetails) -> ())? = {_,_ in}
-    
+
     var pauseTappedAction: (() ->())? = {}
     
-    var currentStep: Int = 1
+    var currentStep: Int
     var frequencies = [1000, 2000]
-    let stepCount: Int
+    let maxStepCount: Int
     var currentEar: TestEar = .left
     var currentFrequencyIndex = 0
     
@@ -44,11 +44,17 @@ class ScreeningViewModel: ObservableObject {
     
     let patient: Patient
     
+    var screeningProtocolsLoader: (() async -> [String])?
+    
     init(patient: Patient) {
         self.patient = patient
-        stepCount = frequencies.count * 2
+        maxStepCount = frequencies.count * 2
+        currentStep = 1
     }
     
+    func loadProtocols() async {
+        await screeningProtocols = screeningProtocolsLoader?() ?? ["Dummy Protocol"]
+    }
     
     func conductStep() async {
         // Play sound, then move to answering step
@@ -56,9 +62,8 @@ class ScreeningViewModel: ObservableObject {
         await playSound()
     }
     
-    
     func playSound() async {
-        screeningState = .playing
+        updateScreeningState(to: .playing)
         let rand = Int.random(in: 0...2)
         // after a random # of seconds (1-4s), play the sound for 1 second, then complete
         print("Waiting to play sound")
@@ -92,7 +97,7 @@ class ScreeningViewModel: ObservableObject {
             currentEar = .right
             currentStep += 1
             currentFrequencyIndex = 0
-            screeningState = .instruction
+            updateScreeningState(to: .instruction)
         }
         // End of screening
 //        else if (currentEar == .right && currentStep == frequencies.count - 1) {
@@ -105,8 +110,14 @@ class ScreeningViewModel: ObservableObject {
         else {
             currentFrequencyIndex += 1
             currentStep += 1
-            screeningState = .instruction
+            updateScreeningState(to: .instruction)
         }
     }
     
+    
+    private func updateScreeningState(to state: ScreeningStates) {
+        DispatchQueue.main.async { [weak self] in
+            self?.screeningState = state
+        }
+    }
 }

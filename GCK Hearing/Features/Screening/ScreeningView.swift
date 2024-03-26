@@ -55,42 +55,52 @@ struct ScreeningView: View {
                 }
             }
             .frame(maxWidth: .infinity, alignment: .center)
-            .navigationTitle("Step \(screeningVm.currentStep) of \(screeningVm.stepCount) - \(screeningVm.screeningState.rawValue)")
+            .navigationTitle("Step \(screeningVm.currentStep) of \(screeningVm.maxStepCount) - \(screeningVm.screeningState.rawValue)")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
-                    RoundedButton(title: "Pause", color: Color.blueTheme.accentDark) {
-                        screeningVm.menuExitAction?()
+                    RoundedButton(title: "Pause", color: Color.deepBlueTheme.background) {
+                        screeningVm.pauseTappedAction?()
                     }
                 }
             }
+        }
+        .task {
+            print("Loading all protocols NOW")
+            await screeningVm.loadProtocols()
         }
     }
 }
 extension ScreeningView {
     var instructionView: some View {
         VStack(spacing: 30) {
-            ZStack(alignment: screeningVm.currentEar == .left ? .topLeading : .topTrailing) {
+            ZStack {
                 Image(systemName: "headphones")
                     .font(.system(size: 75))
                     .imageScale(.large)
-//                    .resizable()
-//                .frame(width: 100, height: 120)
                 Image(systemName: screeningVm.currentEar == .left ? "l.circle.fill" : "r.circle.fill")
                     .font(.title)
                     .imageScale(.large)
                     .foregroundColor(screeningVm.currentEar == .left ? .blue : .red)
-                    .offset(CGSize(width: screeningVm.currentEar == .left ? -40: 40, height: 0))
+                    .offset(CGSize(width: screeningVm.currentEar == .left ? -80: 80, height: -20))
             }
-//            .frame(maxWidth: .infinity)
             
             Text(screeningVm.instructionText)
+                .multilineTextAlignment(.center)
+                .font(.headline)
             
-            RoundedButton(title: "Play", color: Color.theme.accent) {
+            Spacer()
+                .frame(height: UIScreen.main.bounds.height / 10)
+            
+            Button("Play") {
                 Task {
                     await screeningVm.conductStep()
                 }
             }
+            .buttonStyle(MainActionButtonStyle(
+                backgroundColor: Color.deepBlueTheme.background,
+                foregroundColor: Color.white
+            ))
         }
         .frame(maxHeight: .infinity, alignment: .center)
     }
